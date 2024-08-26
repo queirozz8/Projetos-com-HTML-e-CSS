@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mídias em HTML5</title>
+</head>
+<body>
+    <h1>Imagem dinâmica</h1>
+    <p>Tente abrir esse site em vários dispositivos diferentes ou simplesmente aumente e diminua o tamanho do seu navegador.</p>
+
+    <picture>
+        <source media="(min-width: 1350px)" srcset="imagens/Foto-G.png" type="image/png">
+        <source media="(min-width: 800px)" srcset="imagens/Foto-M.png" type="image/png">
+        <img src="imagens/Foto-P.png" alt="Imagem flexível">
+    </picture>
+    <h1>Reproduzindo Áudio</h1>
+    <p>Vamos reproduzir alguns áudios em HTML5.</p>
+    <p>Aqui temos o podcast bem antigo do Gustavo Guanabara, de 2008, o Guanacast, episódio 33:</p>
+    <audio preload="metadata" controls loop>
+        <source src="sons/guanacast-33.mp3" type="audio/mpeg">
+            Se não apareceu nenhum player de som, infelizmente seu navegador não consegue reproduzir áudio. 
+            <a href="sons/guanacast-33.mp3">Clique aqui para baixar o arquivo MP3</a>
+    </audio>
+
+    <p>Aqui temos uma música sem Copyright qualquer:</p>
+    <audio src="sons/happy-mistake.mp3" controls loop></audio>
+
+    <h1>Vídeos com HTML5</h1>
+    <h2>Inserindo vídeos hospedados localmente</h2>
+    <p>Este vídeo está hospedado no meu próprio servidor.</p>
+    <video controls width="560">
+        <source src="videos/Pessoa-Programando.mp4" type="video/mp4">
+        <source src="videos/Pessoa-Programando.webm" type="video/webm">
+        Seu naveador não tem compatibilidade com reprodução de vídeos.
+    </video>
+
+    <h2>Inserindo vídeos do YouTube</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vqs0941fn_c?si=1RUsaA3JOGuzvZ5_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</body>
+</html>
