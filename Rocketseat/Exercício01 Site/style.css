@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    background-color: rgba(63, 72, 196, 0.493);
+    text-align: center;
+}
+
+img {
+    width: 300x;
+    height: 300px;
+}
