@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários</title>
+    <style>
+        body {
+            background-color: #D1E3DD;
+            color: #252627;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+        }
+
+        legend {
+            color: #252627;
+        }
+        
+        #separado {
+            color: #423E37;
+        }
+
+        #junto {
+            color: #6E675F;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Formulários</h1>
+
+    <form id="meu-form">
+        <fieldset>
+            <legend><h2>Inputs com estruturas de labels diferentes</h2></legend>
+            <label id="separado" for="Nome">Nome completo (Esse é feito com o label separado do input, a forma mais comum): </label>
+            <input type="" id="Nome" name="Nome" placeholder="Escreva aqui">
+            <label id="junto">Nome completo (Esse é feito com o label junto com o input): <input type="text" placeholder="Escreva aqui"></label>
+            <button type="reset">Limpar</button>
+            <br>
+            <h3>&darr; &darr; Botão qualquer</h3>
+            <button type="submit" name="button" value="" form="meu-form">Enviar</button>
+        </fieldset>
+
+
+        <fieldset>
+            <legend><h2>Outros tipos de input</h2></legend>
+            <label>Escolha uma das frutas (se quiser, pode digitar alguma outra fruta que não estiver na lista): </label>
+            <input type="text" list="lista_de_frutas" placeholder="Escolha uma fruta">
+            <datalist id="lista_de_frutas">
+                <option>Maçã</option>
+                <option>Banana</option>
+                <option>Manga</option>
+                <option>Laranja</option>
+                <option>Cereja</option>
+            </datalist>
+        </fieldset>
+
+
+        <fieldset>
+            <legend><h2>Lista de cores</h2></legend>
+            <input type="color" list="lista_de_cores" placeholder="Escolha uma cor">
+            <datalist id="lista_de_cores">
+                <option>#ff0000</option>
+                <option>#00ff00</option>
+                <option>#0000ff</option>
+                <option>#ffffff</option>
+            </datalist>
+        </fieldset>
+    </form>
+</body>
+</html>
