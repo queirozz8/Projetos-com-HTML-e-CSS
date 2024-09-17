@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    background-color: #D1E3DD;
+    color: #252627;
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 1.1em;
+}
+
+legend {
+    color: #252627;
+}
+
+#separado {
+    color: #423E37;
+}
+
+#junto {
+    color: #6E675F;
+}
+
+#email, #autocomplete {
+    width: 250px;
+}
