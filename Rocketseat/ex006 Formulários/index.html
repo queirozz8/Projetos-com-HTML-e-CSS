@@ -4,36 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulários</title>
-    <style>
-        body {
-            background-color: #D1E3DD;
-            color: #252627;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.5em;
-        }
-
-        legend {
-            color: #252627;
-        }
-        
-        #separado {
-            color: #423E37;
-        }
-
-        #junto {
-            color: #6E675F;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Formulários</h1>
+    <h2>Algumas das coisas que aprendi sobre formulários estão aí.</h2>
 
     <form id="meu-form">
         <fieldset>
             <legend><h2>Inputs com estruturas de labels diferentes</h2></legend>
-            <label id="separado" for="Nome">Nome completo (Esse é feito com o label separado do input, a forma mais comum): </label>
-            <input type="" id="Nome" name="Nome" placeholder="Escreva aqui">
+            <label id="separado" for="Nome">Nome completo (Esse é feito com o label separado do input, a forma mais comum) (Esse input está com autofocus): </label>
+            <input type="" id="Nome" name="Nome" placeholder="Escreva aqui" autofocus>
             <label id="junto">Nome completo (Esse é feito com o label junto com o input): <input type="text" placeholder="Escreva aqui"></label>
             <button type="reset">Limpar</button>
             <br>
@@ -53,8 +34,169 @@
                 <option>Laranja</option>
                 <option>Cereja</option>
             </datalist>
+
+            <h3>Sugestões com autocomplete</h3>
+            <label for="autocomplete">Digite seu e-mail (tem sugestões de e-mail no input) (seu e-mail não está sendo levado à lugar nenhum, esse exemplo é só para mostrar as sugestões que o próprio navegador agora dá sobre os e-mails mais populares que você usa.):</label>
+            <input type="email" id="autocomplete" autocomplete="email" placeholder="Digite seu e-mail aqui">
+
+            <h3>Senhas</h3>
+            <label for="senha">Digite uma senha qualquer (não precisa ser a sua) (Mínimo de 4 caracteres, máximo de 8.) (Campo obrigatório): </label>
+            <input type="password" 
+            id="senha" 
+            placeholder="Senha*"
+            minlength="4" 
+            maxlength="8"
+            size="8"
+            required>
+
+            <br>
+            <label for="senha_2">Essa senha possui uma verificação, ela só aceita caracteres hexadecimais:</label>
+            <input type="password"
+            pattern="[0-9a-fA-F]{4,8}"
+            title="Digite caracteres HEXADECIMAIS (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a/A, b/B, c/C, d/D, e/E, f/F.) Com o mínimo de 4 caracteres e no máximo 8."
+            placeholder="Senha"
+            size="8">
+
+            <br>
+            <label for="senha_3">Essa senha possui uma sugestão para usuários mobile, ela automaticamente abre o teclado numérico quando o usuário clica no campo de input:</label>
+            <input type="password" 
+            id="senha_3"
+            placeholder="Senha"
+            inputmode="numeric">
+
+            <h3>E-mails</h3>
+            <label for="email">Digite um e-mail qualquer (não precisa ser o seu):</label>
+            <input type="email"
+            id="email"
+            autocomplete="email"
+            minlength="8"
+            maxlength="255"
+            placeholder="Digite seu e-mail aqui">
+            <button type="submit">Enviar</button>
+
+            <h3>URLs</h3>
+            <label for="url">Digite uma URL qualquer:</label>
+            <input type="url"
+            placeholder="http://example.com"
+            pattern=".*\.com.*"
+            title="Digite uma URL que tenha um padrão como: http://example.com, https://example.com ou https://example.com.br."
+            spellcheck="true">
+
+            <h3>Arquivos/files</h3>
+            <label for="file">Selecione uma imagem qualquer:</label>
+            <input type="file"
+            accept="image/*"
+            multiple>
+
+            <h3>Checkbox</h3>
+            <p>Selecione seus interesses:</p>
+
+            <input type="checkbox" 
+            id="coding"
+            value="Programação"
+            name="interesse">
+            <label for="coding">Programação</label>
+            
+            <input type="checkbox" 
+            id="musica"
+            value="Música" 
+            name="interesse">
+            <label for="musica">Música</label>
+
+            <input type="checkbox"
+            id="xadrez"
+            value="Xadrez"
+            name="interesse">
+            <label for="xadrez">Jogar Xadrez</label>
+
+            <input type="checkbox"
+            id="ler"
+            value="Ler"
+            name="interesse">
+            <label for="ler">Ler</label>
+
+            <h3>Radio</h3>
+            <p>Bora tomar um café?</p>
+            <label for="sim">Sim</label>
+            <input type="radio"
+            id="sim"
+            value="Sim"
+            name="cafe">
+
+            <label for="nao">Não</label>
+            <input type="radio" 
+            id="nao"
+            value="não"
+            name="cafe"
+            checked>
+
+            <h3>Pesquisas com Search</h3>
+            <datalist id="searchterms">
+                <option>Mac</option>
+                <option>Windows</option>
+                <option>Linux</option>
+            </datalist>
+
+            <form action="">
+                <input type="search" 
+                aria-label="Campo de Pesquisa: Digite o seu termo de busca" 
+                name="q" 
+                list="searchterms" 
+                placeholder="Digite seu termo de busca" 
+                size="29">
+
+                <p>Outro search:</p>
+                <label for="">Pesquisar por ID (Só um exemplo)</label>
+                <input type="search"
+                name="q2"
+                size="2"
+                pattern="[0-9]{2}"
+                title="Digite o número do ID: Ex: 68. É uma dezena, caracteres: 0 até 9.">
+                <button>Pesquisar</button>
+            </form>
+
+            <h3>Datas com date</h3>
+            <label for="data">Coloque uma data aleatória:</label>
+            <input type="date" id="data">
         </fieldset>
 
+
+
+        <fieldset>
+            <legend><h2>Textarea</h2></legend>
+            <label for="mensagem">Escreva qualquer coisa aqui:</label>
+            <textarea name="mensagem" id="mensagem" placeholder="Digite algo aqui"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend><h2>Select</h2></legend>
+            <label for="carselect">Qual o modelo do carro?</label>
+            <select name="carmodel" id="carselect">
+                <option value="" disabled selected>Selecione o modelo</option>
+                <option value="fiat">Fiat Uno</option>
+                <option value="audi">Audi A3</option>
+                <option value="bmw">BMW X6</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend><h2>optgroup</h2></legend>
+            <label>Selecione um ou mais pets: 
+                <br>
+                <select name="animais" multiple size="8">
+                    <optgroup label="Pets de 4 patas">
+                        <option value="cao">Cachorro</option>
+                        <option value="gato">Gato</option>
+                        <option value="hamster">Hamster</option>
+                    </optgroup>
+                    <optgroup label="Animais que voam">
+                        <option value="pombo">Pombo</option>
+                        <option value="arara">Arara</option>
+                        <option value="aguia">Águia</option>
+                    </optgroup>
+                </select>
+            </label>
+        </fieldset>
 
         <fieldset>
             <legend><h2>Lista de cores</h2></legend>
