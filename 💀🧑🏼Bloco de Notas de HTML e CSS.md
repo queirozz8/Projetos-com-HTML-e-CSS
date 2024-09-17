@@ -13,7 +13,7 @@ Um elemento é uma tag de abertura, o texto dentro dela (Ou qualquer outra coisa
 # **TAGS DE CONTAINER HTML**
 Uma tag de container é um tipo específico de elemento HTML cuja principal função é agrupar outros elementos dentro dela. Essas tags são usadas para estruturar e organizar o conteúdo da página em blocos, permitindo aplicar estilos CSS, manipular o layout e organizar a hierarquia do conteúdo.
 Exemplo de uma tag de container (um elemento `<div>`):
-```
+```html
 <div class="container">
     <h1>Título</h1>
     <p>Este é um parágrafo dentro de um container.</p>
@@ -47,13 +47,13 @@ Em HTML, você pode identar todas as tags que quiser, o HTML simplesmente não l
 
 
 - `<!doctype html>`
-##### 1. O que significa `<!doctype html>`?
+#### 1. O que significa `<!doctype html>`?
 `<!doctype html>` é a forma simplificada de declarar o tipo de documento para HTML5. Ele instrui o navegador a renderizar a página usando o modo de compatibilidade com os padrões do HTML5, que é a versão mais moderna do HTML.
 - **`<!DOCTYPE>`**: Este é o começo da declaração e significa "Document Type Declaration" (Declaração de Tipo de Documento). Ele é necessário para que o navegador interprete o HTML corretamente.
 - **`html`**: Isso especifica que o tipo de documento é HTML, e não XML, XHTML, ou outro tipo de linguagem de marcação.
-##### 2. O `!` significa algo especial?
+#### 2. O `!` significa algo especial?
 Sim, o `!` no início da declaração `<!DOCTYPE>` indica que essa linha é uma "declaração", não uma tag HTML comum. Ele serve como uma instrução ao navegador, e é por isso que se utiliza o `!` no começo. Não é algo específico do HTML5 ou HTML em geral, mas é uma convenção de linguagens SGML (a linguagem da qual o HTML deriva).
-##### 3. Significa que o arquivo é da última versão do HTML?
+#### 3. Significa que o arquivo é da última versão do HTML?
 Quando você usa `<!doctype html>`, está dizendo ao navegador que esse documento está usando a versão HTML5. Esta é a versão mais recente e recomendada, e essa declaração é a maneira mais simples de indicar isso. Em versões anteriores do HTML, as declarações de tipo de documento eram muito mais complexas, porque os navegadores precisavam de mais informações para processar o conteúdo corretamente.
 **Vale lembrar que o `<!doctype html>` é no início do arquivo inteiro, nada vem antes dele.**
 
@@ -80,7 +80,7 @@ Quando você usa `<!doctype html>`, está dizendo ao navegador que esse document
 - `<details>`: Define uma seção expansível que o usuário pode abrir e fechar.
 - `<summary>`: Define o título da seção expansível dentro de `<details>`.
 #### Exemplo de `<details>` com `<summary>`:
-```
+```html
 <details>
   <summary>Mais informações</summary>
   <p>Este é o conteúdo adicional que pode ser expandido.</p>
@@ -119,7 +119,7 @@ Exemplo de uso do `<abbr>`:
 1. `<ul>`: Lista não ordenada (Unordered List) (com marcadores), tipo esse:
 - 🠔 Símbolo de bolinha, seria equivalente ao "disc".
 O uso da lista não ordenada é para listas onde você não precisa ordernar os itens dela, não tem uma ordem específica, como:
-```
+```html
 <ul>
 	<li>Pão</li>
     <li>Leite</li>
@@ -135,7 +135,7 @@ Ela possui um atributo chamado `type`, ele indica qual o símbolo que vai ser ex
 3) O `square` representa um quadrado colorido por dentro. **Símbolo:** `■`, só que menor, e dentro do quadrado a cor é preta.
 O que fica por padrão é o `disc`.
 **Exemplo de uso dos atributos do `<ul>`:**
-```
+```html
 <ul type="square"> <!-- disc circle square -->
 	<li>Pão</li>
 	<li>Leite</li>
@@ -151,7 +151,7 @@ Aqui, a lista vai sair com os ícones em formato de quadrado, pois `type="square
 É equivalente ao símbolos de listas ordenadas do próprio Obsidian:
 1. 🠔 Símbolo de número, seria equivalente ao "`type="1"`".
 O uso da lista ordenada é para listas onde você precisa ordenar os itens dela, tem uma ordem específica, quando você adiciona um novo item, você não quer ter que ficar mudando o número deles toda vez, como:
-```
+```html
 <ol>
 	<li>Acordar</li>
 	<li>Ligar para o João</li>
@@ -207,7 +207,7 @@ etc...
 O padrão de exibição é o `1`.
 
 **Exemplo do uso dos atributos do `<ol>`:**
-```
+```html
 <ol type="I"> <!-- 1 A a I i -->
 	<li>Acordar</li>
 	<li>Ligar para o João</li>
@@ -228,7 +228,7 @@ Aqui, a lista vai ser exibida e ordenada com números romanos em maiúsculo, poi
 #### `start=''`
 Um outro atributo que as principais duas listas possuem é o `start`. Ele modifica em qual contagem ele vai começar. Se for de números, por exemplo, e eu colocar `start='4'`, o primeiro item da lista vai ter o número 4.
 Vale lembrar que para letras, você não indica o `start` por letras também, como `start='c'`, isso é inválido; você deve indicar o `start` com um número, então, como c é a terceira letra do alfabeto, `start='3'`.
-```
+```html
 <ol type="a" start='5'>
             <li>PHP</li>
             <li>Python</li>
@@ -241,7 +241,7 @@ Aqui, PHP vai começar com e, pois é a quinta letra do alfabeto.
 ### Listas aninhadas
 É quando colocamos uma lista dentro da outra. Para criar uma lista dentro da outra, é só você criar a tag da lista normalmente, como faria se não estivesse dentro de uma lista maior, mas agora estando numa lista maior.
 **Exemplo:**
-```
+```html
 <h2>Linguagens de Programação Favoritas do Gustavo Guanabara</h2>
     <ol>
         <li>Antigas</li>
@@ -262,7 +262,7 @@ Aqui, PHP vai começar com e, pois é a quinta letra do alfabeto.
 ```
 Aqui, a lista maior é a de Linguagens de Programação Favoritas do Gustavo Guanabara, e as sub-listas são as linguagens Antigas e as linguagens Novas.
 **Outro exemplo:**
-```
+```html
 <h2>Jogos favoritos do Gustavo Guanabara</h2>
     <ol>
         <li>NES</li>
@@ -291,7 +291,7 @@ Aqui, a lista maior é a de Linguagens de Programação Favoritas do Gustavo Gua
 3. `<li>`: Um item de lista. Independente do tipo da lista, todos vão ter o `<li>` nela.
 
 4. `<dl>`: Lista de Definição. Indica um item e sua definição:
-```
+```html
 <dl>
     <dt>HTML</dt>
     <dd>Linguagem de marcação para a criação do conteúdo de um site.</dd>
@@ -391,19 +391,29 @@ Aqui, eu tinha uma pasta chamada "imagens", nela, tinha o arquivo "css-200.png",
 `<img src="https://cdn.iconscout.com/icon/free/png-256/free-javascript-logo-icon-download-in-svg-png-gif-file-formats--html-programming-language-coding-logos-icons-1720087.png" alt="Logo JavaScript">`
 Aqui, eu peguei uma imagem que está indexada em um outro servidor, se o servidor cair, essa imagem vai deixar de ser exibida. O que eu basicamente fiz foi copiar o endereço da imagem, ou, quando você abre a imagem em uma nova guia, você copia a URL dela e joga em `src`.
 
-### Height (Altura) e Width (Largura)
-As propriedades `height` e `width` em HTML são usadas para definir as dimensões de um elemento na página.
 
-**height**: **A propriedade `height` define a ALTURA de um elemento.** Ela pode ser especificada em diferentes unidades de medida, como pixels (`px`), porcentagem (`%`) ou outras unidades. Por exemplo, `height: 200px;` define a altura do elemento como 200 pixels.
+## Atributos da tag `<img>`:
 
-**width**: **A propriedade `width` define a LARGURA de um elemento.** Assim como a `height`, ela pode ser especificada em diferentes unidades de medida, como pixels (`px`), porcentagem (`%`) ou outras unidades. Por exemplo, `width: 50%;` define a largura do elemento como 50% do espaço disponível.
+- `src`: Define a URL da imagem.
+- `alt`: Define o texto alternativo que vai ser exibido caso o navegador não consiga exibir a imagem.
+- `title`: Define a caixinha que é exibida quando você "descansa o mouse" em cima da imagem, mostrando o título dela.
+- `width`: Define a largura da imagem.
+- `height`: Define a altura da imagem.
 
-As principais diferenças entre elas são:
-1. **Orientação**: A `height` define a dimensão vertical, enquanto a `width` define a dimensão horizontal do elemento.
-2. **Aplicação**: Essas propriedades são comumente usadas em elementos como `<div>`, `<img>`, `<video>` e `<iframe>` para controlar suas dimensões.
-3. **Comportamento**: Quando apenas uma das propriedades é definida, o elemento assumirá o tamanho padrão do seu conteúdo na outra dimensão. Por exemplo, se definir apenas `width: 100px;`, a altura do elemento será ajustada automaticamente de acordo com o conteúdo.
-4. **Responsividade**: Ambas as propriedades podem ser usadas em conjunto com outras técnicas, como media queries, para criar layouts responsivos e adaptáveis a diferentes tamanhos de tela.
-Em resumo, `height` e `width` são propriedades complementares que permitem controlar as dimensões de um elemento HTML, sendo a `height` responsável pela dimensão vertical e a `width` pela dimensão horizontal.
+## Título externo das imagens com `<figure>`:
+
+- `<figure>`: Cria uma tag de container, onde a imagem fica dentro dela, e no fim, colocamos o `<figcaption>`, que é o título da imagem.
+- `<figcaption>`: Cria o título da imagem, ele é exibido por padrão em baixo da imagem.
+**Exemplo de uso do `<figure>`:**
+```html
+    <a href="https://google.com" target="_blank">
+        <figure>
+            <img src="images/Computer.jpeg" alt="Computador de um programador" title="Computador de um programador" width="500px" height="723px">
+            <figcaption>Computador de um programador.</figcaption>
+        </figure>
+    </a>
+```
+Colocamos a tag dentro de um link, para que assim, qualquer área que o usuário clicar, ele for redirecionado para o Google. O grande diferencial do `<figure>` é o título que ele tem, o `<figcaption>`. É o título da imagem.
 
 
 
@@ -413,7 +423,7 @@ Pense em uma loja de roupas que oferece diferentes tamanhos de uma mesma camiset
 Agora, imagine que, na web, o cliente é o dispositivo (computador, tablet, smartphone) e a camiseta é a imagem que você quer mostrar. O problema é que uma imagem grande demais pode demorar para carregar em um celular com conexão lenta, enquanto uma imagem pequena pode ficar borrada em uma tela de alta resolução.
 ### Estrutura da tag `<picture>`
 Aqui está um exemplo básico de como usar a tag `<picture>`:
-```
+```html
 <picture>
   <source media="(min-width: 800px)" srcset="imagem-grande.jpg">
   <source media="(min-width: 400px)" srcset="imagem-media.jpg">
@@ -425,7 +435,7 @@ Aqui está um exemplo básico de como usar a tag `<picture>`:
 - **`srcset`**: Este atributo especifica a URL da imagem que será carregada se a condição do `media` for atendida.
 - **`<img>`**: Esta é a tag de fallback, que exibe uma imagem padrão (neste caso, `imagem-pequena.jpg`) se nenhuma das condições anteriores for atendida. O `alt` é importante para acessibilidade e SEO.
 ## Outro exemplo:
-```
+```html
     <picture>
         <source media="(min-width: 1350px)" srcset="Imagens/Foto-G.png" type="image/png">
         <source media="(min-width: 800px)" srcset="Imagens/Foto-M.png" type="image/png">
@@ -458,7 +468,7 @@ Aqui está um exemplo básico de como usar a tag `<picture>`:
 - `<video>`: Insere um vídeo.
 ## Estrutura básica da tag `<video>`
 Aqui está um exemplo simples de como usar a tag `<video>`:
-```
+```html
 <video controls width="500">
     <source src="video.mp4" type="video/mp4">
     <source src="video.webm" type="video/webm">
@@ -475,7 +485,7 @@ Aqui está um exemplo simples de como usar a tag `<video>`:
 - **Texto de fallback**: "Seu navegador não suporta a reprodução de vídeos." Esse texto é exibido se o navegador não conseguir reproduzir nenhum dos formatos de vídeo fornecidos ou não suportar a tag `<video>`. É uma forma de garantir que o usuário entenda que deveria haver um vídeo ali.
 
 ## Outro exemplo, agora sem o `<source>`
-```
+```html
 <video src="video.mp4">Seu navegador não tem compatibilidade com reprodução de vídeos.</video>
 ```
 - **`<video src="video.mp4">`**: Define a fonte do vídeo. Como não temos a tag `<source>`, que seria utilizada para disponibilizar diversas versões do arquivo, o único arquivo que é exibido é esse. Caso o navegador não consiga exibir, vai ser exibido "Seu navegador não tem compatibilidade com reprodução de vídeos.", que é o texto de fallback.
@@ -488,7 +498,7 @@ Além dos atributos que vimos no exemplo acima, a tag `<video>` possui outros at
 
 1. **`autoplay`**: Faz com que o vídeo comece a ser reproduzido automaticamente assim que a página é carregada. É importante notar que muitos navegadores modernos bloqueiam a reprodução automática, especialmente se o vídeo tiver som, para evitar experiências intrusivas.
 2. **`loop`**: Faz com que o vídeo seja reproduzido em loop, ou seja, ele recomeçará automaticamente sempre que terminar.
-3. **`muted`**: Inicia o vídeo sem som. Isso pode ser útil em conjunto com o `autoplay`, pois, como mencionei, muitos navegadores bloqueiam vídeos com som que se reproduzem automaticamente.
+3. **`muted`**: Inicia o vídeo sem som. Isso pode ser útil em conjunto com o `autoplay`, pois os navegadores que não permitem o `autoplay`, permitem ele, caso ele estiver com o `muted` junto.
 4. **`poster`**: Especifica uma imagem que será exibida antes do vídeo começar a ser reproduzido. Isso é útil como uma miniatura ou pré-visualização do vídeo. É a "Thumbnail" do vídeo.
 5. **`preload`**: Controla o pré-carregamento do vídeo. Pode ser configurado como:
 - **`auto`**: O navegador decide se deve carregar todo o vídeo quando a página é carregada.
@@ -501,7 +511,7 @@ Além dos atributos que vimos no exemplo acima, a tag `<video>` possui outros at
 
 - `<audio>`: Insere um áudio.
 ## Estrutura básica da tag `<audio>`
-```
+```html
 <audio controls>
   <source src="musica.mp3" type="audio/mpeg">
   Seu navegador não suporta o elemento de áudio.
@@ -515,7 +525,7 @@ Além dos atributos que vimos no exemplo acima, a tag `<video>` possui outros at
 
 
 ## Outra estrutura, agora sem o `<source>`
-```
+```html
 <audio src="midia/happy-mistake.mp3" controls loop></audio>
 ```
 1. **`<audio src="midia/happy-mistake.mp3">`**: Aqui, o atributo `src="midia/happy-mistake.mp3"` está sendo usado diretamente na tag `<audio>`. Isso significa que o navegador vai buscar e reproduzir o arquivo de áudio localizado no caminho especificado, que neste caso é `midia/happy-mistake.mp3`.
@@ -538,7 +548,7 @@ Você usa um atributo assim: `<audio src="audio.mp3" atributo atributo atributo>
 A tag `<audio>` tem vários outros atributos e opções que podem ser utilizados para customizar a experiência de áudio:
 1) **`autoplay`**: Faz com que o áudio comece a tocar automaticamente assim que a página é carregada.
 2) **`loop`**: Faz com que o áudio seja repetido indefinidamente.
-3) **`muted`**: Inicia o áudio sem som.
+3) **`muted`**: Inicia o áudio sem som. Isso **não** garante que o áudio consiga ficar com o `autoplay` em navegadores que proíbem isso.
 4) **`preload`**: Controla o pré-carregamento do áudio. Pode ser configurado como:
 - **`auto`**: O navegador decide se deve carregar todo o áudio quando a página é carregada.
 - **`metadata`**: Apenas os metadados (como duração e dimensões) são carregados.
@@ -567,7 +577,7 @@ A tag `<audio>` tem vários outros atributos e opções que podem ser utilizados
 - `<colgroup>`: Uma tag container que muda as características das colunas da tabela
 - `<rowgroup>`: Uma tag container que muda as características das linhas da tabela.
 ## Exemplo de tabela simples:
-```
+```html
     <table>
         <thead>
             <tr>
@@ -606,7 +616,7 @@ A tag `<audio>` tem vários outros atributos e opções que podem ser utilizados
 - Definimos a última coisa na tabela com o `<td>` dentro de `<tfoot>`. Que são o total de pessoas.
 
 ## Exemplo de uma tabela mais complexa:
-```
+``` html
     <table>
         <caption>Produzidos x Vendidos por Loja</caption>
 
@@ -661,14 +671,437 @@ A tag `<audio>` tem vários outros atributos e opções que podem ser utilizados
 ## 7. **Formulários**
 
 - `<form>`: Define um formulário.
+- `action`: Define para onde os dados do formulário devem ser enviados quando você clica no botão de "enviar" (ou "submit").
+- `method`: Define o método HTTP que esse formulário vai estar fazendo. Qualquer método pode ser colocado nesse atributo.
+
+- `fieldset`: Define um agrupamento de campos de mesmo propósito dentro do seu formulário. É usado para deixar seu HTML mais semântico e mais acessível para leitores de tela.
+Imagine que você está preenchendo um formulário físico para fazer uma inscrição em um evento. O formulário é longo e inclui várias seções: informações pessoais, detalhes de contato, e preferências do evento. Se essas seções fossem apenas uma longa lista de perguntas sem separação, ficaria confuso. No entanto, se o formulário estiver dividido em blocos bem definidos, com títulos que indicam o que cada seção significa, será muito mais fácil de entender e preencher.
+
+O **`fieldset`** faz exatamente isso em formulários HTML.
+
+
+1) É o nome do agrupamento que vai aparecer na tela, ele é o primeiro elemento dentro do fieldset.
+2) `form`: o id de um formulário ao qual esse fieldset pertence. Você usa ele quando ele não está dentro da tag do formulário. Exemplo abaixo:
+```html
+<form id="contato" action="">
+	<input type="text">Input
+</form>
+
+
+<fieldset form="contato" name="input Qualquer">
+	<legend>Contato</legend>
+
+	<label for="">Nome</label>
+	<input type="text">
+</fieldset>
+```
+
+3) `name`: Nome do grupo do fieldset. É só para deixar um pouco melhor escrito e mais semântico o seu HTML.
+4) `disabled`: Desabilita todos os elementos dentro do fieldset. Eles não serão enviados ao submeter o formulário.
+
+
+
 - `<input>`: Campo de entrada de dados (texto, senha, etc.).
-- `<label>`: Rótulo para um elemento de formulário.
-- `<textarea>`: Área de texto multilinhas.
-- `<button>`: Botão clicável. Caso queira exibir um botão em baixo de outro, você precisa usar o `<br>`, se não, ele vai mostrar um do lado do outro.
-- `<select>`: Menu suspenso.
-- `<option>`: Opções dentro do menu suspenso.
-- `<fieldset>`: Agrupa elementos de formulário.
-- `<legend>`: Legenda para o `<fieldset>`.
+1) `type`: Define o tipo de input. Existem diversos tipos de input existentes. 
+Para verificar a disponibilidade de um tipo de input com os navegadores, use o site https://caniuse.com. Os principais tipossão:
+
+1. `text`: Cria um campo de entrada de texto em uma única linha. Feito para capturar informações simples, como nome, e-mail, etc.  
+Exemplo:
+```html
+<label for="nome">Nome:</label>
+<input type="text" id="nome" name="nome">
+```
+
+2. `password`: Um campo de texto em que os caracteres digitados são mascarados. Feito para capturar senhas e dados sensíveis.  
+Exemplo:
+```HTML
+<label for="senha">Senha:</label>
+<input type="password" id="senha" name="senha">
+```
+
+1) `minlength` e `maxlength`: Definem o mínimo e o máximo de caracteres que uma senha precisa ter.
+2) `size`: Define o tamanho do input, geralmente é bom você colocar o mesmo número que está no `maxlength`.
+3) `pattern`: Define um padrão à ser seguido na senha. Por exemplo: `pattern="[0-9a-fA-F]{4,8}"`. Aqui, estamos dizendo que a senha só aceita caracteres hexadecimais, tem no mínimo 4 caracteres e no máximo 8 caracteres.
+4) `inputmode`: Altera o teclado em smartphones, tipo abrir o teclado numérico (`numeric`) ao invés de abrir o teclado inteiro.
+5) `title`: Define o título à ser mostrado na mensagem de erro, caso o usuário digite uma senha inválida.
+6) `autocomplete="new-password"`: É uma das opções de `autocomplete` que você pode definir. Ela define se o navegador vai sugerir uma senha feita por ele mesmo, para auxiliar o usuário. Existem navegadores que fazem isso por padrão, então caso você queira que isso não aconteça no seu input, você deixa o `autocomplete="off"`.
+
+
+3. `email`: Um campo de texto que valida se o valor inserido é um endereço de e-mail válido.  
+Exemplo:
+``` HTML
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email">
+```
+1) `multiple`: O campo irá receber 1 ou mais e-mails, separado por vírgulas.
+2) `minlength` e `maxlength`: Definem o mínimo e o máximo de caracteres que o campo terá.
+
+
+4. `number`: Cria um campo que permite a entrada de números inteiros ou decimais.  
+Exemplo:
+``` HTML
+<label for="quantidade">Quantidade:</label>
+<input type="number" id="quantidade" name="quantidade" min="1" max="10">
+```
+1) `min` e `max`: Definem o menor e o maior número que o usuário pode colocar no input.
+2) `step`: Define de quanto em quanto a setinha do input vai pular.
+
+
+3. `date`: Campo de seleção de data. A formatação no código é `yyyy-mm-dd`. A formatação no ouput vai depender da região que está o seu navegador. 
+Exemplo:
+``` HTML
+<label for="nascimento">Data de nascimento:</label>
+<input type="date" id="nascimento" name="nascimento">
+```
+1) `value`: Define o valor prévio em que aquele campo está. Lembre-se da formatação de código padrão.
+
+
+6. `datetime-local`: Permite a entrada de data e hora no formato local.  
+Exemplo:
+``` HTML
+<label for="agendamento">Agendamento:</label>
+<input type="datetime-local" id="agendamento" name="agendamento">
+```
+
+7. `time`: Campo para escolher uma hora (sem data).  
+Exemplo:
+```html
+<label for="horario">Horário:</label>
+<input type="time" id="horario" name="horario">
+```
+
+8. `month`, `week`, `year`: Usados para definir suas respectivas datas em um input. Tome cuidado com eles, pode ser que eles não sejam aceitos por todos os navegadores.
+
+9. `tel`: Campo para números de telefone. Não realiza validação automática, mas é formatado para esse propósito.  
+Exemplo:
+```html
+<label for="telefone">Telefone:</label>
+<input type="tel" id="telefone" name="telefone">
+```
+
+10. `checkbox`: Cria uma caixa de seleção que pode ser marcada ou desmarcada. Se o usuário marcar a caixa, o valor definido pelo desenvolvedor é enviado ao Backend. Se o usuário não marcar a caixa, nenhum dado vai ser enviado ao Backend.
+Exemplo:
+```html
+<label for="aceito">Aceito os termos e condições</label>
+<input type="checkbox" id="aceito" name="aceito">
+```
+
+1) `value`: Indica o valor que o formulário vai enviar para o Backend caso o usuário selecione a checkbox e envie o formulário. Se colocarmos algo como:
+```html
+<p>Selecione seus interesses:</p>
+
+<input type="checkbox" 
+id="coding"
+value="Programação"
+name="interesse">
+<label for="coding">Programação</label>
+```
+Se o usuário marcar essa checkbox, o que vai ser enviado para o Backend vai ser algo como:
+`interesse=Programação`
+Se o desenvolvedor não especificar qual o `value`, o padrão, caso o usuário marque a caixa, é `on`.
+então ficaria `interesse=on`
+
+2) `checked`: Define a checkbox para estar pré-marcada.
+3) `name`: Usada para definir múltiplos campos que estejam relacionados. Como:
+```html
+<p>Selecione seus interesses:</p>
+
+<input type="checkbox" 
+id="coding"
+value="Programação"
+name="interesse">
+<label for="coding">Programação</label>
+ 
+<input type="checkbox" 
+id="musica"
+value="Música" 
+name="interesse">
+<label for="musica">Música</label>
+
+<input type="checkbox"
+id="xadrez"
+value="Xadrez"
+name="interesse">
+<label for="xadrez">Jogar Xadrez</label>
+
+<input type="checkbox"
+id="ler"
+value="Ler"
+name="interesse">
+<label for="ler">Ler</label>
+```
+Aqui, todos os checkboxes estão relacionados, eles fazem parte dos interesses que o usuário pode ter. Caso o usuário marque mais de uma caixa, e os checkboxes não estejam relacionados, o HTML vai enviar separadamente os dados para o Backend. Isso é ruim. Caso queremos que ele mande tudo de uma vez, pois são coisas que estão relacionadas, utilizamos o atributo `name`. Se mais de um input tem o mesmo `name`, o HTML automaticamente entende que eles estão relacionados, meio que são "farinha do mesmo saco".
+
+Caso o usuário marcassse por exemplo, Programação, Xadrez e Ler, o que seria mandado para o Backend seria:
+`interesse=Programação&interesse=Xadrez&interesse=Ler`.
+
+
+10. `radio`: Um grupo de botões de opção, onde apenas uma opção pode ser selecionada por vez.  
+Exemplo:
+```html
+<label for="genero">Masculino</label>
+<input type="radio" id="masculino" name="genero" value="masculino">
+<label for="genero">Feminino</label>
+<input type="radio" id="feminino" name="genero" value="feminino">
+```
+1) `name`: Define o nome daquele grupo de opções. Sem ele, cada opção é tratada como independente, e você não vai conseguir selecionar só uma por vez. Os nomes precisam ser os mesmos para que funcione corretamente. É o nome que vai ser enviado ao Backend.
+2) `value`: Define o valor que vai ser enviado ao Backend caso o usuário marque aquele campo e envie o formulário.
+3) `checked`: Define para que uma opção já fique previamente marcada.
+
+
+11. `search`: Um campo de texto semelhante ao campo `text`, mas otimizado para pesquisas. Quando o usuário insere texto, esse tipo de campo pode sugerir correções ou ter o botão de limpar automaticamente, dependendo do navegador. A ideia é facilitar a entrada de dados em situações onde se espera que o usuário faça buscas, como em barras de pesquisa de sites.
+Exemplo:
+```html
+<label for="busca">Buscar:</label>
+<input type="search" id="busca" name="busca">
+```
+Ele é utilizado principalmente em formulários ou interfaces de busca, onde você quer que o navegador aplique algumas melhorias visuais e funcionais automaticamente. Ao contrário do campo `text`, o `search` pode incluir uma opção para limpar o texto digitado, ajudando na experiência de pesquisa.
+1) `aria-label`É como se fosse um `<label>`, porém, se utilizássemos um `<label>` aqui, isso ficaria meio redundante para pessoas que enxergam, pois elas já sabem que ali é um campo de busca. Mas pessoas que usam leitores de tela não conseguem saber isso, então só deixar no `placeholder`, ou até mesmo não deixar nada é algo não muito semântico, os mecanismos de busca podem acabar te limitando. Então fazemos com que os leitores de tela possam ler que aquilo é um campo de busca, mas para usuários que enxergam, aquilo não é visível.
+Existe uma forma alternativa e ainda mais semântica de se fazer a mesma coisa. Que seria utilizando um `<label>` mesmo, porém ocultando ele com CSS. Dessa forma:
+
+HTML:
+```
+<label for="pesquisa" class="visually-hidden">Pesquisa:</label>
+<input type="search" id="pesquisa" name="q" list="searchterms" placeholder="Digite seu termo de busca" size="29">
+```
+CSS:
+```css
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+```
+Essa forma supostamente é melhor aceita por mecanismos de busca, e é uma forma mais semântica.
+
+2) `pattern`: Define um padrão que precisa ser seguido pelo usuário ao digitar alguma coisa no campo de busca. Exemplo: `pattern="[0-9]{2}"` (Aceita números de 0 até 9, e apenas dezenas.)
+
+
+12. `file`: Permite a seleção de arquivos do sistema do usuário para upload.  
+Exemplo:
+```html
+<label for="arquivo">Envie um arquivo:</label>
+<input type="file" id="arquivo" name="arquivo">
+```
+1) Sempre quando você for mexer com inputs de `type="file"`, você precisa colocar ele dentro de um `<form method="post" enctype="multipart/form-data">`. Se o seu formulário não irá mexer com inputs de tipo file, você não precisa disso.
+2) `accept`: Filtra quais arquivos ele vai aceitar. Se você quiser que o usuário mande uma imagem, você colocaria algo como: `accept="image/*"`, ou `accept=".png"` (Todos os arquivos pngs vão ser mostrados, qualquer outro arquivo que não tenha essa extensão não poderá ser interagido.). Se fosse para aceitar todos os vídeos, seria `accept="video/*`, áudios: `accept="audio/*`.
+3) `multiple`: Permite que o usuário possa selecionar mais de um arquivo e mande tudo de uma vez.
+
+
+13. `range`: Cria um controle deslizante para selecionar um valor dentro de uma faixa numérica.  
+Exemplo:
+```html
+<label for="volume">Volume:</label>
+<input type="range" id="volume" name="volume" min="0" max="100">
+```
+1) `min` e `max`: Definem os menores e os maiores valores que vão ser aceitos por esse input.
+2) `step`: Define de quanto em quanto o controle deslizante vai pular. Quanto maior o número, maior é o pulo que ele dá e consequentemente, menos preciso é.
+
+
+14. `color`: Um seletor de cores, permitindo ao usuário escolher uma cor específica.  
+Exemplo:
+```html
+<label for="cor">Escolha uma cor:</label>
+<input type="color" id="cor" name="cor">
+```
+
+15. `submit`: Cria um botão que envia os dados do formulário ao servidor.  
+Exemplo:
+`<input type="submit" value="Enviar">`
+
+16. `reset`: Cria um botão que redefine todos os campos do formulário para seus valores iniciais.  
+Exemplo:
+`<input type="reset" value="Redefinir">`
+
+17. `url`: Valida se a entrada é um URL válido.  
+Exemplo:
+```html
+<label for="website">Website:</label>
+<input type="url" id="website" name="website">
+```
+1) `spellcheck="true"`: Habilita a verificação ortográfica para este input.
+
+
+18. `hidden`: Campo invisível ao usuário, útil para enviar dados ocultos, como IDs ou informações de sessão.  
+Exemplo:
+`<input type="hidden" name="id" value="12345">`
+
+
+## Atributos usados na maioria dos inputs:
+1) `id`: Define a indentificação daquele input, é o atributo que vai ser utilizado para o `<label>` e o `<input>` se comunicarem. 
+2) `value`: Define o valor prévio daquela entrada de dados, algo que já está previamente ali. Esse valor não consegue ser apagado por um botão que tenha o `type="reset"` (na verdade, qualquer outra coisa que o usuário digitar e esse botão for ativado, o valor dentro da caixa de entrada de dados vai se transformar no que estiver dentro de `value`), ele só consegue ser apagado se for apagado manualmente pelo usuário. 
+3) `placeholder`: Define o texto que vai estar com pouca opacidade no input, geralmente tem algo escrito como "Digite aqui", algo do tipo
+4) `autocomplete`: Faz com que quando o usuário vá digitar algum dado no input, o próprio navegador vai pegar as informações que ele tem guardadas para oferecer sugestões de dados comuns para ele colocar no input, porque o usuário sempre usa aqueles dados na maioria dos sites. Se o navegador não tiver nenhum tipo de dado sobre aquilo, a sugestão não será exibida. Existem diversos tipos de dados que podemos indicar para o navegador buscar sobre o usuário, como `email`, `bday`, `adress`, `country`, `new-password`, etc.
+5) `autofocus`: Faz com que o input fique automaticamente com o cursor nele quando o usuário acessar o site. Sem que ele precise clicar no input para aí sim começar à escrever. Você só consegue determinar um `autofocus` por página.
+6) `disabled`: Desabilita o input, ele fica meio transparente e você não consegue interagir de nenhuma forma com ele. Geralmente é utilizado junto com JavaScript para reabilitar ele novamente.
+7) `readonly`: É como se fosse um primo de segundo-grau do `disabled`, ao invés de você não conseguir interagir de nenhuma forma com o input, agora você pode ler ele, pelo menos. O input fica com a coloração normal, sem ficar transparente igual ao `disabled`.
+8) `form`: Indica o formulário que aquele input está relacionado. Um input pode não estar dentro de um formulário, mas você pode interligar os 2 da mesma forma. Por meio do `form`. O formulário precisa ter o `id` dele para isso funcionar.
+9) `name`: Fornece o nome do input, é para o Backend saber aonde direcionar cada dado recebido no Banco de Dados.
+10) `required`: Faz um input se tornar obrigatório.
+11) `list`: É usado para associar o campo de entrada a um elemento `<datalist>`, que define uma lista de opções sugeridas para o usuário. Isso permite que o usuário veja sugestões enquanto digita no campo, mas sem limitar a entrada apenas às opções da lista, como faria um `<select>`.
+
+
+
+- `<label>`: Rótulo para um elemento de formulário. Serve para associar e indentificar uma (ou mais) tag de entrada de dados. Ela melhora a acessibilidade, e o usuário pode clicar no texto do rótulo para focar o campo de entrada automaticamente. Isso facilita o preenchimento, especialmente em dispositivos móveis, onde clicar diretamente em um campo pequeno pode ser mais difícil. O uso de `<label>` é recomendado porque ele deixa o código mais semântico.
+
+Existe duas formas de se utilizar o `<label>` com o `<input>`:
+1. De forma separada (que é a forma mais comum). Onde o `<label>` tem o seu `for`, e o `<input>` tem o seu `id`. Um separado do outro, pode estar um na linha seguinte do outro ou não.
+Exemplo:
+```html
+<label for="cidade">Digite o nome da cidade onde mora:</label>
+<input id="cidade" type="text" placeholder="Digite o nome da cidade aqui">
+```
+Aqui, os 2 elementos estão separados, com o `for` e o `id`, fica mais explícito o que cada coisa é.
+
+2. De forma junta (não é muito comum, mas é válido). Onde o `<input>` fica dentro do `<label>`. `for` e `id` não são utilizados aqui, até porque um já está dentro do outro, não tem porque indentificar eles.
+Exemplo:
+```html
+<label>Digite o nome da cidade onde mora: <input type="text" placeholder="Digite o nome da cidade aqui"></label>
+```
+Aqui, os 2 elementos estão juntos, isso deixa o código menos verboso e simples, porém menos legível e menos "Clean Code".
+
+
+1) `for`: Define a conexão entre este label e a tag de entrada de dados. Quando uma tag de entrada de dados não está dentro de um label, mas queremos que eles estejam relacionados (Como se um estivesse dentro do outro), nós fazemos isso pelo `id` e o `for`.
+2) `id`: Indentificação que vai ser agregada à tag de entrada de dados.
+Exemplo de uso de um label:
+```html
+<label for="nome">Nome Completo</label>
+<!--Resto do código HTML-->
+<input id="nome" type="text">
+```
+Aqui, as 2 tags parecem não estar relacionadas, mas pelo `for` e `id`, elas estão. Um código com um label e as tags de entrada de dados dentro dele é considerado um código menos legível, desorganizado. Um código com o `for` e o `id` para todos os elementos de entrada de dados é considerado mais organizado e legível para o desenvolvedor.
+
+Vale notar que esse atributo `for` só funciona com elementos específicos, como `<button>`, `<input>` (Not hidden), `<meter>`, `<output>`, `<progress>`, `<select>`, `<textarea>`, etc.
+
+
+- `<button>`: Define um botão clicável
+1) `type`: Define o tipo de botão que aquele botão é. Existem 3 tipos de botões: 
+1. `submit` (padrão), que é usado para enviar o formulário
+2. `reset`, que serve para resetar algum elemento, alguma coisa
+3. `button`, que é apenas um botão comum que não realiza ações de formulário, geralmente usado para scripts.
+
+2) `name`: Define o nome do botão, útil para quando você precisa identificar o botão no back-end ao enviar um formulário.
+3) `formtarget`: Define onde o resultado da submissão do formulário será exibido. Pode ter valores como `_self` (padrão), `_blank` (nova aba), `_parent`, ou `_top`.
+4) `value`: Especifica o valor do botão, que é enviado junto ao nome quando o formulário é submetido.
+5) `disabled`: Este atributo desabilita o botão, tornando-o não clicável. Não precisa de valor, apenas a presença do atributo já faz o botão ser desativado.
+6) `autofocus`: Define que o botão deve receber foco automaticamente quando a página é carregada.
+7) `form`: Permite associar o botão a um formulário específico na página, usando o `id` do formulário. Isso é útil quando o botão está fora do `<form>`.
+8) `formaction`: Especifica uma URL diferente para onde os dados do formulário devem ser enviados, apenas para aquele botão.
+9) `formenctype`: Define como os dados do formulário devem ser codificados ao serem enviados. Comumente usado com upload de arquivos.
+- **Valores principais**:
+    - `application/x-www-form-urlencoded` (padrão)
+    - `multipart/form-data` (para envio de arquivos)
+    - `text/plain`
+Exemplo de uso: `<button type="submit" formenctype="multipart/form-data">Enviar Arquivos</button>`
+
+9) `formmethod`: Especifica qual método HTTP deve ser usado ao enviar o formulário (GET ou POST).
+10) `formnovalidate`: Ignora a validação dos campos do formulário ao enviar. Por exemplo, mesmo que algum campo obrigatório não esteja preenchido, o formulário será enviado.
+
+
+
+- `<datalist>`: Define uma lista de opções que o usuário pode escolher num input. É aquele clássico tipo de input de setinha, onde você clica na setinha, e aparece diversas opções para você escolher. Você não é naturalmente forçado à escolher uma daquelas opções, por padrão, você pode digitar o que quiser ali, as opções do `<datalist>` são só sugestões, por padrão. Ela não pode estar relacionada com um `<label>` para funcionar corretamente, se estiver, ela vira uma entrada de texto padrão. Exemplo de uso:
+```html
+<label for="cidade">Escolha uma cidade:</label>
+<input type="text" id="cidade" name="cidade" list="cidades">
+
+<datalist id="cidades">
+  <option value="São Paulo">
+  <option value="Rio de Janeiro">
+  <option value="Belo Horizonte">
+  <option value="Curitiba">
+  <option value="Porto Alegre">
+</datalist>
+```
+Aqui, a `<datalist>` tem o mesmo id que é utilizado pelo input, e tem as opções que o usuário pode escolher.
+
+```html
+<input type="color" list="lista_de_cores" placeholder="Escolha uma cor">
+	<datalist id="lista_de_cores">
+		<option>#ff0000</option>
+		<option>#00ff00</option>
+		<option>#0000ff</option>
+		<option>#ffffff</option>
+	</datalist>
+```
+Aqui, é uma lista com códigos de cores, o layout exibido é diferente. Sempre faça uma lista só com cores, nunca com texto normal misturado.
+
+
+
+- `<select>`: Menu com diversas opções. Se parece com o `datalist`, porém o usuário só consegue selecionar as opções que são mostradas à ele. Ele não pode digitar uma outra opção que ele queira.
+Exemplo de uso do `<select>`:
+```html
+<label for="carselect">Qual o modelo do carro?</label>
+<select name="carmodel" id="carselect">
+    <option value="" disabled selected>Selecione o modelo</option>
+    <option value="fiat">Fiat Uno</option>
+    <option value="audi">Audi A3</option>
+    <option value="bmw">BMW X6</option>
+</select>
+```
+Você geralmente, utilizando o `<select>`, vai colocar a primeira opção com um "Selecione a opção", algo do tipo. Porém, se você deixar ele como se fosse uma opção normal, o usuárop vai poder não escolher nada e mandar o formulário, sem ter marcado nada. Por isso, colocamos o atributo `disabled`, para que a mensagem de escolher uma opção seja mostrada, porém não será possível escolher ela e mandar o formulário.
+
+1) `multiple`: Permite que o usuário possa escolher mais de uma opção.
+
+
+
+- `<option>`: Opções dentro do menu suspenso. É o que define as opções do `<datalist>` e do `<select>`. Vale lembrar que se o que estiver dentro da opção for um código de cor (independente do tipo, hexadecimal, rgb, etc.), o layout exibido para o usuário é diferente, agora, com uma lista de cores. Só tome cuidado: Nunca misture códigos de cores com listas de texto normal, ao invés de sair a cor para o usuário escolher, vai sair o código de cor, sem a cor em si, só o código dela.
+
+
+- `<textarea>`: Área de texto grande para o usuário digitar. Tem tamanho adaptável pelo usuário, mas essa opção pode ser desabilitada com CSS.
+1) Quando usamos o `<textarea>`, espaços, quebras de linha, e qualquer outra coisa que usamos para deixar o código mais limpo é contado no output. Então, quando for utilizar o `<textarea>`, não faça assim caso não queira que o `<textarea>` fique com 4 espaços no início:
+```html
+<textarea>
+	conteúdo
+</textarea>
+```
+Faça assim:
+```html
+<textarea>conteúdo</textarea>
+```
+
+2) `rows`e `cols`: Define a quantidade de linhas (`rows`) (Altura) e colunas (`cols`) (Largura) que aquele `<textarea>` vai ter. Isso altera o tamanho dele.
+3) `minlength` e `maxlength`: Define o mínimo e o máximo de caracteres que o usuário pode digitar naquele `<textarea>`.
+4) `wrap`: Define se o texto vai se "embrulhar" dentro do `<textarea>`. Exemplo:
+```
+Esse é um texto 
+que está com o
+wrap.
+```
+
+```
+Esse é um texto que não está com o wrap.
+```
+Por padrão, ele vem com o `wrap="soft"`, porém podemos desabilitar ele com `wrap="off"` e a quebra de linha automática para que o texto caiba corretamente dentro do `<textarea>` não vai acontecer.
+
+
+- `<optgroup>`: Define uma lista de opções que são separadas por um título. É útil quando as opções de um select são muitas, então separando por títulos fica algo mais organizado e legível para o usuário.
+Todo `<optgroup>` precisa estar dentro de um `<select>`.
+
+1) `label`: Define o que vai ser mostrado para o usuário. Faz o papel de um label normal.
+Exemplo de uso do `<optgroup>`:
+```html
+<label>Selecione um ou mais pets: 
+	<br>
+    <select name="pets" multiple size="8">
+        <optgroup label="Pets de 4 patas">
+            <option value="cao">Cachorro</option>
+            <option value="gato">Gato</option>
+            <option value="hamster">Hamster</option>
+        </optgroup>
+        <optgroup label="Pets que voam">
+            <option value="pombo">Pombo</option>
+            <option value="arara">Arara</option>
+            <option value="aguia">Águia</option>
+        </optgroup>
+    </select>
+</label>
+```
+Aqui, o ATRIBUTO `label` do `<optgroup>` representa o que vai ser mostrado para o usuário, para ele entender o que ele precisa fazer.
 
 
 
@@ -680,7 +1113,7 @@ A tag `<audio>` tem vários outros atributos e opções que podem ser utilizados
 - `<code>`: Define um bloco de código, assim, a fonte fica Monoespaçada.
 - `<pre>`: Define texto pré-formatado (Não desconsidera os espaços e quebras de linha do texto).
 Exemplo de uso do `<pre>` junto com o `<code>`:
-```
+```html
     <pre>
         <code>
     num = int(input('Digite um número: '))
@@ -710,9 +1143,9 @@ Exemplo de uso do `<pre>` junto com o `<code>`:
 - `<style>`: Define estilos CSS internos se estiver dentro do `<head>`. Se estiver como um atributo de uma tag, é considerado um CSS Inline.
 - `<script>`: Define scripts JavaScript.
 - `type`: Pode ser usado em diversas tags para fornecer ao navegador e ao serviço de busca de websites informações adicionais.
-##### Como `type` Funciona
+#### Como `type` Funciona
 O atributo `type` especifica o tipo MIME (Multipurpose Internet Mail Extensions) do recurso apontado pelo link. O tipo MIME é uma forma padrão de indicar o formato do arquivo, o que permite ao navegador ou a outro software saber que tipo de conteúdo ele está lidando e como deve processá-lo.
-##### Quando Usar o `type`
+#### Quando Usar o `type`
 O `type` é mais uma dica do que uma obrigação para o navegador. Ele não força o navegador a fazer algo específico, mas pode melhorar a experiência do usuário e a compatibilidade com algumas ferramentas e scripts que possam estar processando o link. Por exemplo:
 - **Melhorar a acessibilidade**: Alguns leitores de tela podem usar o `type` para anunciar o tipo de arquivo antes de o usuário clicar no link.
 - **Otimização para scripts**: Se você estiver usando JavaScript para manipular links, o `type` pode ser útil para identificar o tipo de arquivo sem ter que analisar a URL.
@@ -891,7 +1324,7 @@ Cada regra CSS é composta por duas partes principais:
     - **Valor**: Define o que essa característica deve ser (por exemplo, azul, 16px, etc.).
 
 Vamos olhar para um exemplo:
-```
+```css
 p {
     color: blue;
     font-size: 16px;
@@ -911,7 +1344,7 @@ O seletor é como a "porta de entrada" para a regra CSS. Ele diz ao navegador on
 Há vários tipos de seletores:
 - **Seletores de Tipo**: Aplica estilos a todos os elementos de um determinado tipo. No exemplo acima, `p` é um seletor de tipo que seleciona todos os parágrafos.
 - **Seletores de Classe**: Aplica estilos a elementos que possuem uma classe específica. Exemplo:
-```
+```css
 .botao {
     background-color: green;
 }
@@ -919,7 +1352,7 @@ Há vários tipos de seletores:
 Isso aplicaria um fundo verde a qualquer elemento com a classe `botao`.
 
 - **Seletores de ID**: Aplica estilos a um único elemento com um ID específico. Exemplo:
-```
+```css
 #menu {
     border: 1px solid black;
 }
@@ -927,7 +1360,7 @@ Isso aplicaria um fundo verde a qualquer elemento com a classe `botao`.
 Isso aplicaria uma borda preta ao elemento com o ID `menu`.
 
 - **Seletores de Atributo**: Aplica estilos a elementos com um atributo específico. Exemplo:
-```
+```css
 input[type="text"] {
     border: 2px solid gray;
 }
@@ -970,7 +1403,7 @@ O CSS inline é aplicado diretamente ao elemento HTML usando o atributo `style`.
 O CSS interno é colocado dentro da tag `<style>` no cabeçalho (`<head>`) do documento HTML. Isso é como aplicar um estilo a todas as paredes de um único cômodo da casa, sem afetar os outros cômodos.
 
 Exemplo:
-```
+```html
 <head>
     <style>
         p {
@@ -990,13 +1423,13 @@ Exemplo:
 O CSS externo é armazenado em um arquivo separado com a extensão `.css` e vinculado ao HTML usando a tag `<link>`. Isso é como ter um guia de design central para toda a casa, garantindo que todos os cômodos sigam a mesma estética.
 
 Exemplo do arquivo HTML:
-```
+```html
 <head>
     <link rel="stylesheet" href="styles.css">
 </head>
 ```
 Exemplo do arquivo `styles.css`:
-```
+```css
 p {
     color: red;
     font-size: 18px;
@@ -1105,8 +1538,19 @@ font-style -> font-weight -> font-size -> font-family
 
 ## 4. **Dimensões**
 
-- `width`: Define a largura de um elemento. Exemplo: `width: 300px;` ou `width: 50%;`
-- `height`: Define a altura de um elemento. Exemplo: `height: 200px;`
+Existem diversas unidades de medida para passar nesses atributos de dimensões. Como:
+- `in` (polegada)
+- `cm` (Centímetros)
+- `px` (Pixels)
+- `mm` (Milímetros)
+- in (Polegadas)
+- pt
+- pc
+Se o valor passado for só o número, sem a unidade de medida depois do número, o navegador já vai previamente entender que estamos falando de pixels (px).
+
+
+- `width`: Define a largura de um elemento. Exemplo: `width: 300px;` ou `width: 50%;`.
+- `height`: Define a altura de um elemento. Exemplo: `height: 200px;`.
 ### Aspect Ratio calculado pelos navegadores
 O _aspect ratio_ é simplesmente a proporção entre a largura (width) e a altura (height) de uma imagem ou de qualquer outro elemento retangular. Imagine que você tem uma foto e quer ampliá-la ou reduzi-la. Para garantir que ela não fique distorcida, é importante manter a mesma proporção entre a largura e a altura. Esse relacionamento é o que chamamos de _aspect ratio_.
 
@@ -1175,7 +1619,7 @@ Manter o _aspect ratio_ garante que a imagem não seja distorcida. Se você alte
 - Layouts de grade com células proporcionais
 
 **Exemplo prático:**
-```
+```css
 .video-container {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -1223,7 +1667,7 @@ Vantagens do `aspect-ratio`:
 8. Combinação com outras propriedades CSS: Trabalha bem com `object-fit`, `min-height`, `max-width`, etc., para layouts mais sofisticados.
 
 Exemplo prático da diferença:
-```
+```html
 <!-- Cálculo automático do navegador -->
 <img src="imagem.jpg" width="300">
 
@@ -1315,7 +1759,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 3. **Fontes**
 
 - **`@font-face`**: Define uma fonte personalizada para uso na página, mesmo que não esteja instalada no dispositivo do usuário. Exemplo:
-```
+```css
 @font-face {
     font-family: 'MinhaFonte';
     src: url('minha-fonte.woff2') format('woff2');
@@ -1326,7 +1770,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 4. **Animações**
 
 - **`@keyframes`**: Define uma animação CSS, especificando as etapas da animação. Exemplo:
-```
+```css
 @keyframes nomeAnimacao {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -1337,14 +1781,14 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 5. **Páginas e Impressão**
 
 - **`@page`**: Controla a aparência de documentos impressos, como margens e tamanho da página. Exemplo:
-```
+```css
 @page {
     margin: 1cm;
 }
 ```
 
 - **`@media print`**: Aplica estilos específicos quando um documento está sendo impresso. Exemplo:
-```
+```css
 @media print {
     body {
         color: black;
@@ -1357,7 +1801,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 6. **Regras de Documentos e Componentes**
 
 - **`@document`**: Aplica estilos a documentos baseados em sua URL ou outras características (não amplamente suportado). Exemplo:
-```
+```css
 @document url("https://example.com/") {
     h1 {
         color: red;
@@ -1366,7 +1810,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ```
 
 - **`@layer`**: Controla a ordem de aplicação de camadas de estilos, garantindo que as regras CSS se sobreponham da maneira desejada (CSS Cascade Layers). Exemplo:
-```
+```css
 @layer base {
     body {
         margin: 0;
@@ -1378,7 +1822,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 7. **Suporte para Condições de Propriedades**
 
 - **`@supports not`**: Aplica estilos se uma propriedade **não** for suportada. Exemplo:
-```
+```css
 @supports not (display: grid) {
     .container {
         float: left;
@@ -1395,7 +1839,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 9. **Estilização de Componentes Web**
 
 - **`@container`**: (Experimental) Aplica estilos baseados nas dimensões de um contêiner específico, útil para layouts responsivos de componentes. Exemplo:
-```
+```css
 @container (max-width: 600px) {
     .item {
         font-size: 14px;
@@ -1407,7 +1851,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ## 10. **Outras At-Rules**
 
 - **`@counter-style`**: Define estilos personalizados para listas numeradas. Exemplo:
-```
+```css
 @counter-style minha-contagem {
     system: cyclic;
     symbols: "A" "B" "C";
@@ -1416,7 +1860,7 @@ As regras at-rules (`@rules`) em CSS são comandos especiais que controlam como 
 ```
 
 - **`@viewport`**: Define configurações para a viewport em dispositivos móveis (pouco utilizado). Exemplo:
-```
+```css
 @viewport {
     width: device-width;
     zoom: 1;
@@ -1441,13 +1885,13 @@ No código, as classes são definidas no CSS e aplicadas aos elementos HTML usan
 Suponha que você queira que todos os títulos `<h1>` em uma página tenham cor vermelha e um certo tamanho de fonte. Você faria o seguinte:
 
 No HTML:
-```
+```html
 <h1 class="titulo-vermelho">Título 1</h1>
 <h1 class="titulo-vermelho">Título 2</h1>
 <h1 class="titulo-vermelho">Título 3</h1>
 ```
 No CSS:
-```
+```css
 .titulo-vermelho {
     color: red;
     font-size: 24px;
@@ -1471,11 +1915,11 @@ IDs são usados quando você quer aplicar um estilo único a um elemento especí
 Suponha que você tenha um título na página que quer destacar com uma cor e tamanho únicos.
 
 No HTML:
-```
+```html
 <h1 id="titulo-unico">Título Único</h1>
 ```
 No CSS:
-```
+```css
 #titulo-unico {
     color: blue;
     font-size: 30px;
@@ -1519,7 +1963,7 @@ O nome "Cascading Style Sheets" não é por acaso. Em CSS, "cascata" se refere �
 A "cascata" no CSS refere-se a como os estilos são aplicados de cima para baixo, e a "especificidade" determina qual estilo é aplicado quando múltiplos seletores atingem o mesmo elemento.
 
 - **Cascata:** Se dois estilos conflitantes são aplicados, o último na ordem do código geralmente prevalece.
-```
+```css
 p {
     color: black;
 }
@@ -1530,7 +1974,7 @@ p {
 Neste exemplo, o texto será azul porque o segundo estilo é o último.
 
 - **Especificidade:** Seletores mais específicos (como IDs) têm prioridade sobre seletores mais genéricos (como elementos).
-```
+```css
 p {
     color: red;
 }
@@ -1548,24 +1992,24 @@ Se um parágrafo tiver o ID `especial`, ele será verde, não vermelho.
 Os seletores são usados para "alcançar" os elementos HTML e aplicar estilos a eles. Eles são como endereços que você usa para encontrar o cômodo certo para decorar.
 
 - **Seletores de Elemento:** Aplicam estilos a todas as instâncias de um determinado tipo de elemento. Você consegue selecionar mais de um elemento por vez, só colocar uma vírgula e o nome do outro elemento. Os elementos colocados irão receber as mesmas configurações que ficarem dentro das chaves.
-```
+```css
 p {
     color: blue;
 }
 ```
 - **Seletores de Classe:** Aplicam estilos a elementos que possuem uma determinada classe. Classes são como etiquetas que você pode colar em diferentes móveis (elementos).
-```
+```css
 .destaque {
     color: orange;
     font-weight: bold;
 }
 ```
 Aplicação:
-```
+```css
 <p class="destaque">Texto destacado.</p>
 ```
 - **Seletores de ID:** Aplicam estilos a um único elemento que possui um ID específico. Como um número de série único para um móvel.
-```
+```css
 #cabecalho {
     background-color: lightgrey;
 }
@@ -1583,7 +2027,7 @@ Aplicação:
 CSS também permite criar designs responsivos que se adaptam a diferentes tamanhos de tela usando media queries. Pense nisso como ajustar a decoração da sua casa de acordo com o tamanho do cômodo.
 
 Exemplo:
-```
+```css
 @media (max-width: 600px) {
     p {
         font-size: 12px;
@@ -1761,12 +2205,12 @@ Com o `font-size`, podemos aumentar e diminuir o tamanho das fontes, temos forma
 # FONTES EXTERNAS, COMO USAR
 
 Quando a fonte é geralmente famosa e existe em um site que disponibilize o código para você utilizar, é preferível.
-```
+```css
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 ```
 
 Mas quando a fonte não está num site como o Google Fonts, você vai precisar baixar ela, tendo o arquivo `.ttf` ou `.otf`, você utiliza o `@font-face`:
-```
+```css
 @font-face {
 	font-family: 'Love';
 	src: url('fonts/love larry.ttf') format('truetype');
@@ -1776,7 +2220,7 @@ Mas quando a fonte não está num site como o Google Fonts, você vai precisar b
 ```
 Caso queira usar uma fonte externa com mais de uma extensão de arquivo, você adiciona um outro `url` do lado, assim:
 
-```
+```css
 @font-face {
 	font-family: 'Love';
 	src: url('fonts/love larry.ttf') format('truetype'), url('fonts/love larry.otf') format(opentype);
@@ -1816,3 +2260,58 @@ Aqui, a única coisa que eu precisei mudar para mostrar o favicon foi ter modifi
 # **ATALHOS DO VISUAL STUDIO CODE PARA PROGRAMAR WEBSITES**
 
 - Caso tenha escrito um texto, e queira formatar ele, colocar em negrito, itálico, sublinhado, etc, porém você já escreveu, e não quer ter que ficar escrevendo a tag inteira no início e no final do texto, você pode usar o atalho: Ctrl + Shift + P e escrever `Emmet: Wrap with Abbreviation`. Você escreve a tag que quer colocar no texto (Sem os `<>` e `</>`), e aperta enter.
+
+
+
+
+
+# **FIGMA**
+https://www.figma.com/
+
+O **Figma** é uma ferramenta de design colaborativo usada principalmente para criar interfaces de usuário (UI), protótipos interativos e layouts visuais para aplicativos e sites. Se você não sabe nada sobre o Figma, pense nele como uma mistura de uma prancheta de desenho com funções poderosas de colaboração em tempo real, tudo acessado diretamente do navegador. Vou quebrar isso em partes mais simples para te ajudar a entender o que faz o Figma ser tão especial e por que ele é amplamente utilizado no design de interfaces hoje em dia.
+
+### 1. **Ferramenta de Design**
+Pense no Figma como um papel digital gigante. Designers o usam para criar **mockups** (representações visuais de uma interface) ou **protótipos** (uma simulação interativa de como um aplicativo ou site funcionaria). No Figma, você pode criar botões, menus, ícones, e tudo o mais que compõe uma interface de usuário. É como usar ferramentas como o **Photoshop** ou **Illustrator**, mas mais focado em criar telas de aplicativos ou websites.
+
+#### Analogia:
+Imagine que você está montando uma casa de Lego. Cada peça de Lego seria um elemento da interface que você está projetando, como um botão ou um ícone. O Figma é a mesa onde você monta esses Legos, só que a mesa é digital e cheia de ferramentas que ajudam você a cortar, colar, alinhar e organizar os blocos.
+
+### 2. **Colaboração em Tempo Real**
+Um dos recursos mais poderosos do Figma é a capacidade de trabalhar **em equipe**, todos ao mesmo tempo e no mesmo arquivo. Em vez de cada pessoa fazer uma parte do design em separado e depois juntar tudo (como era comum com outras ferramentas), no Figma todo mundo pode ver e editar o trabalho de todos em tempo real, como se estivessem todos escrevendo no mesmo documento de texto.
+
+#### Analogia:
+Imagine que você está pintando um grande mural com seus amigos. Em vez de cada um pegar uma parte do mural, vocês todos podem pintar ao mesmo tempo na mesma parede, vendo o que os outros estão fazendo em tempo real. Assim, se você precisar ajustar algo para combinar com o que o outro pintou, pode fazer isso na hora, sem esperar.
+
+### 3. **Baseado na Nuvem**
+O Figma funciona completamente online, no navegador. Não precisa instalar nada no seu computador (embora também exista uma versão desktop opcional). Isso significa que você pode acessar seus arquivos de design de qualquer lugar e a qualquer momento, bastando ter acesso à internet.
+
+#### Analogia:
+É como ter seus projetos de design guardados em uma pasta na nuvem, como o Google Drive. Não importa onde você esteja, se você tiver uma conexão com a internet, pode abrir e editar seus arquivos.
+
+### 4. **Protótipos Interativos**
+Além de criar o design estático (os visuais), o Figma permite que você conecte diferentes telas e crie **prototipagem**, que é a simulação do comportamento de uma aplicação real. Você pode definir como os botões funcionam, como as páginas mudam, e até criar animações. Isso é extremamente útil para apresentar a ideia de como um aplicativo vai funcionar sem precisar programar nada.
+
+#### Analogia:
+Pense no protótipo como se fosse uma peça de teatro de um aplicativo. Você monta as cenas (as telas) e depois ensaia como os personagens (os elementos interativos) devem se mover e interagir uns com os outros. Tudo isso sem ter que "construir" o aplicativo de verdade.
+
+### 5. **Componentes e Estilos**
+O Figma também tem um sistema de **componentes reutilizáveis**. Imagine que você criou um botão que será usado em várias partes de um aplicativo. Em vez de desenhar esse botão várias vezes, você pode criar um "componente". Depois, quando você precisar mudar algo nesse botão, muda o componente uma vez, e a alteração será aplicada a todas as cópias dele no projeto. Isso economiza muito tempo.
+
+Além disso, ele tem **estilos de design**, onde você define padrões para cores, tipografias (fontes) e espaçamentos, para garantir que todo o design mantenha uma consistência visual.
+
+#### Analogia:
+Imagine que você é um chefe de cozinha. Em vez de fazer um molho do zero toda vez que vai cozinhar, você faz um grande lote e guarda na geladeira. Toda vez que precisar do molho, você usa o que já preparou. Se precisar mudar algo na receita, basta mudar o molho na geladeira, e todos os pratos feitos com ele vão ser atualizados.
+
+### 6. **Integração com Desenvolvedores**
+Depois que o design está pronto, os desenvolvedores precisam transformar esse design em código. O `Figma` facilita muito essa transição, fornecendo especificações detalhadas do design diretamente no arquivo. Isso inclui medidas, cores, e até mesmo códigos CSS que os desenvolvedores podem usar para construir o projeto.
+
+#### Analogia:
+É como se o Figma fosse um arquiteto que desenha os planos detalhados de uma casa e depois entrega esses planos para o construtor, que vai seguir todas as medidas exatas para construir a casa no mundo real.
+
+### Resumo das principais funcionalidades:
+1. **Design UI/UX**: Criação de interfaces de usuário e experiências.
+2. **Colaboração em Tempo Real**: Trabalhe junto com outras pessoas, em qualquer lugar.
+3. **Baseado na Nuvem**: Não precisa instalar nada, e você pode acessar de qualquer lugar.
+4. **Protótipos Interativos**: Simule o funcionamento de um aplicativo sem programar.
+5. **Componentes e Estilos**: Crie peças reutilizáveis e padrões de design consistentes.
+6. **Integração com Desenvolvedores**: Facilita a transição do design para o código.
