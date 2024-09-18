@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    background-color: #C1BFC3;
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 2em;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Ocupa a altura total da janela */
+    margin: 0;
+}
+
+div {
+    max-width: fit-content;
+    text-align: center;
+}
+
+
+fieldset {
+    border: 2px solid #747274;
+}
+
+button {
+    width: 70px;
+    height: 55px;
+}
+
+#email {
+    width: 260px;
+}
