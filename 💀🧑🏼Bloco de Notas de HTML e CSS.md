@@ -68,15 +68,31 @@ Quando você usa `<!doctype html>`, está dizendo ao navegador que esse document
 ## 2. **Estrutura de Conteúdo**
 
 - `<header>`: Define a seção de cabeçalho da página, geralmente contendo o título, logo, e navegação.
+- `<nav>`: Define uma seção de navegação com links. Embora você possa criar navegações sem a tag `<nav>`, usá-la dá mais significado semântico ao código, o que é uma boa prática de desenvolvimento web. Ou seja, ela melhora tanto a organização quanto a experiência do usuário. Geralmente fica dentro do `<header>`, mas pode ficar em outros lugares também. Pode ter mais de um `<nav>` por página.
 
-- `<nav>`: Define uma seção de navegação com links. Embora você possa criar navegações sem a tag `<nav>`, usá-la dá mais significado semântico ao código, o que é uma boa prática de desenvolvimento web. Ou seja, ela melhora tanto a organização quanto a experiência do usuário.
+- `<main>`: Indica o conteúdo principal da página, é único por documento. Você pode, tecnicamente, criar um documento HTML sem o `<main>` e ele funcionará perfeitamente, porém, usar ela melhora a acessibilidade e o SEO do seu site. Fora que organiza mais ele. Use sempre um `<main>` por página. Geralmente não é nele que colocamos o `<nav>`, ou outros elementos. **Ele fica sempre com o conteúdo principal da página.**
 
-- `<main>`: Indica o conteúdo principal da página, é único por documento. Você pode, tecnicamente, criar um documento HTML sem o `<main>` e ele funcionará perfeitamente, porém, usar ela melhora a acessibilidade e o SEO do seu site. Fora que organiza mais ele.
+- `<aside>`: Conteúdo relacionado, mas separado do principal, algo não muito importante. Conteúdos levemente relacionados ao conteúdo principal, como explicações do conteúdo, glossários, links extras, biografia do autor, informações de perfil e etc.
 
-- `<section>`: Seção temática de conteúdo.
-- `<article>`: Define um conteúdo independente e autocontido, como um post de blog.
-- `<aside>`: Conteúdo relacionado, mas separado do principal, como barras laterais.
 - `<footer>`: Seção de rodapé da página, geralmente com informações de copyright ou links adicionais.
+
+- `<section>`: Seção temática de conteúdo. Geralmente você usa ele junto com um título logo em seguida. Quando existem muitos deles que são iguais, e estão no mesmo lugar, é mais recomendado que se use um `<article>`.
+
+- `<article>`: Cria blocos de conteúdo que são relacionados, como um post de blog. Imagine que você está lendo uma revista física. Cada artigo que você lê dentro da revista faz sentido independentemente do restante da revista, certo? Pode ser um texto sobre tecnologia, um review de filme, ou uma receita. Esses artigos são entidades independentes que poderiam ser recortados e colados em outro lugar (como em um blog ou outro jornal) e ainda fariam sentido. O conteúdo dentro desse `<article>` pode ser reutilizado em outros contextos ou plataformas e ainda faria sentido, mesmo fora do site original. O `<article>` deve ser usado quando você está trabalhando com um **bloco de conteúdo independente** que pode ser compreendido por si só.
+
+**Uma regra básica: se eu extrair esse elemento do seu contexto, ele continuará fazendo sentido? Se sim, tudo indica que é um `<article>`, se não, é possível que seja um `<section>`. Um capítulo de um livro, por exemplo, perderia o sentido, pois está fortemente associado ao contexto do resto da história - ele seria um `<section>`; já um post em um blog costuma ser independente de outros posts e fazer sentido mesmo fora do contexto do site - ele seria um `<article>`.
+Por exemplo:
+- **Sim para uma notícia, porque você pode ler a notícia em qualquer lugar e ela continua a ser relevante.**
+- **Sim para um post de blog, porque você pode compartilhar o texto em redes sociais ou outro site.**
+- **Não para um item de menu de navegação, porque um item de menu sozinho não faz sentido fora do contexto de sua página original.**
+
+
+### Diferença entre `<article>` e `<section>` e melhor explicação sobre os 2 elementos
+- **Section**: quando vários conteúdos estão relacionados, mas se estivessem num lugar qualquer, sem ser naquele lugar em específico aonde ele está, não faria tanto sentido.
+- **Article**: quando um conteúdo faz sentido por si só. O título que ele tem, e o conteúdo dentro dele em si já explica o que ele é, e se estivesse em qualquer outro lugar, as pessoas entenderiam o que é aquilo.
+
+
+
 - `<details>`: Define uma seção expansível que o usuário pode abrir e fechar.
 - `<summary>`: Define o título da seção expansível dentro de `<details>`.
 #### Exemplo de `<details>` com `<summary>`:
@@ -86,7 +102,8 @@ Quando você usa `<!doctype html>`, está dizendo ao navegador que esse document
   <p>Este é o conteúdo adicional que pode ser expandido.</p>
 </details>
 ```
-
+Exemplo de uso das tags semânticas:
+![](Exemplo%20de%20uso%20das%20tags%20semânticas.png)
 
 
 
@@ -162,7 +179,7 @@ O uso da lista ordenada é para listas onde você precisa ordenar os itens dela,
 	<li>Ir para o trabalho</li>
 	<li>Voltar para casa</li>
 	<li>Jantar</li>
-    <li>Dormir</li>
+	<li>Dormir</li>
 </ol>
 ```
 Aqui, a lista vai ser ordenada por números, a saída vai ser:
@@ -671,8 +688,15 @@ A tag `<audio>` tem vários outros atributos e opções que podem ser utilizados
 ## 7. **Formulários**
 
 - `<form>`: Define um formulário.
-- `action`: Define para onde os dados do formulário devem ser enviados quando você clica no botão de "enviar" (ou "submit").
-- `method`: Define o método HTTP que esse formulário vai estar fazendo. Qualquer método pode ser colocado nesse atributo.
+- `action`: Define para onde os dados do formulário devem ser enviados quando você clica no botão de "enviar" (ou "submit"). 
+1) **Redirecionamento natural**: Quando o formulário é submetido, o navegador envia os dados para o URL definido no `action`. Se essa URL aponta para outra página HTML estática, o navegador simplesmente navega até essa página após o envio do formulário. Isso acontece porque, no caso de uma página HTML estática, não há um backend processando os dados, então o navegador apenas carrega a nova página.
+    
+2. **Envio de dados**: O `action` normalmente envia dados para um script no backend (PHP, Python, etc.) que processa os dados e retorna uma resposta. Mas, se o `action` aponta para um arquivo HTML, como no seu caso, o navegador não processa os dados, apenas redireciona o usuário para a página especificada.
+
+- `method`: Define o método HTTP que esse formulário vai estar fazendo. Qualquer método pode ser colocado nesse atributo. Os métodos mais comuns são:
+1) **`POST`**: Para enviar dados de forma mais segura (como em cadastros, login, etc.).
+2) **`GET`**: Para enviar dados na URL (geralmente usado para buscar ou consultar algo).
+
 
 - `fieldset`: Define um agrupamento de campos de mesmo propósito dentro do seu formulário. É usado para deixar seu HTML mais semântico e mais acessível para leitores de tela.
 Imagine que você está preenchendo um formulário físico para fazer uma inscrição em um evento. O formulário é longo e inclui várias seções: informações pessoais, detalhes de contato, e preferências do evento. Se essas seções fossem apenas uma longa lista de perguntas sem separação, ficaria confuso. No entanto, se o formulário estiver dividido em blocos bem definidos, com títulos que indicam o que cada seção significa, será muito mais fácil de entender e preencher.
@@ -1108,8 +1132,231 @@ Aqui, o ATRIBUTO `label` do `<optgroup>` representa o que vai ser mostrado para 
 
 ## 8. **Semântica e Marcação**
 
-- `<div>`: Container genérico de bloco.
-- `<span>`: Container genérico em linha.
+- `<div>`: É uma tag genérica, é usada quando não se encontra uma tag semântica para um conteúdo em bloco, então utilizamos a `<div>`.
+## Partes que compõem uma div
+1. **O conteúdo** (a parte de dentro, como o texto ou imagens que você colocou ali).
+2. **O padding** (espaço entre o conteúdo e a borda da caixa, como um “colchão” que envolve o conteúdo).
+3. **A borda** (um contorno em volta da caixa, como se fosse uma moldura).
+4. **A margem** (espaço externo ao redor da caixa, que a separa de outros elementos).
+
+
+## Divs externas e internas
+1. **Div externa**: É a `<div>` que contém outras `<divs>` ou elementos dentro dela. Ela age como um contêiner maior. Por exemplo:
+```css
+<div class="externa">
+    <!-- Conteúdo ou divs internas aqui -->
+</div>
+```
+
+2. **Div interna**: É a `<div>` que está dentro de outra `<div>` (a externa). Ela pode ser usada para organizar melhor o conteúdo ou para aplicar estilos específicos. Exemplo:
+```css
+<div class="externa">
+    <div class="interna">Conteúdo 1</div>
+    <div class="interna">Conteúdo 2</div>
+</div>
+```
+Nesse exemplo, as `divs` com classe `interna` estão dentro da `div` com classe `externa`. Isso cria uma relação de "div interna" e "div externa". Essa estrutura permite que você aplique diferentes estilos, posições e funcionalidades tanto para as divisões internas quanto para a externa, facilitando o layout da página.
+
+Essas divisões também são essenciais para aplicar CSS, onde você pode, por exemplo, estilizar a `div externa` de forma diferente da `div interna` e organizar o layout de maneira mais eficiente.
+
+
+
+
+## Box Sizing
+A propriedade `box-sizing` controla como o navegador deve calcular o **tamanho da caixa** quando você define a sua largura e altura.
+Existem dois valores principais para `box-sizing`: **`content-box`** e **`border-box`**. Vamos ver a diferença entre eles.
+
+### 1. **`content-box` (Padrão)**
+Aqui, o tamanho que você define para a largura e a altura refere-se **somente ao conteúdo** da caixa, sem incluir o padding e a borda. Ou seja, o navegador **soma** o padding e a borda ao tamanho total da caixa.
+
+#### Analogia:
+Pense no conteúdo da sua caixa como um **livro**. Se você disser que a largura do seu "livro" é 300px, isso **não inclui** a capa dura (borda) ou o espaço extra para proteção (padding). O livro por si só tem 300px de largura, mas se você adicionar padding ou uma borda grossa, o tamanho total do livro (com capa e tudo) vai aumentar.
+
+#### Exemplo:
+```css
+div {
+  width: 300px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: content-box; /* Padrão */
+}
+```
+- **Conteúdo:** 300px de largura.
+- **Padding:** 20px em cada lado (esquerda e direita).
+- **Borda:** 10px em cada lado (esquerda e direita).
+
+Então, o **tamanho total da caixa** seria:  
+300px (conteúdo) + 20px (padding esquerdo) + 20px (padding direito) + 10px (borda esquerda) + 10px (borda direita) = **360px** de largura total.
+
+O que acontece aqui é que o tamanho da caixa acaba sendo **maior do que você esperava** porque o padding e a borda são adicionados **além** da largura e altura especificadas.
+
+### 2. **`border-box`**
+Neste caso, o valor de largura e altura que você define já inclui o conteúdo, o padding e a borda. Isso significa que o navegador ajusta o conteúdo para que a caixa completa (com borda e padding) tenha o tamanho que você especificou.
+
+#### Analogia:
+Imagine que você tem uma mala de viagem e diz que ela tem que caber no compartimento do avião, que tem 300px de largura. Aqui, você inclui **tudo**: o conteúdo dentro da mala, o forro interno (padding), e a capa externa da mala (borda). A mala toda tem que caber nos 300px, então, se a capa ou o forro forem muito grandes, o espaço para o conteúdo vai ser menor.
+
+#### Exemplo:
+```css
+div {
+  width: 300px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: border-box;
+}
+```
+- A **largura total** da caixa será sempre **300px**, mesmo que você adicione padding e bordas.
+- O navegador ajusta o conteúdo para caber nos 300px, então o espaço real disponível para o conteúdo será menor.
+
+Aqui, o cálculo seria:
+- **Largura total:** 300px (fixo).
+- **Padding:** 20px (ocupando parte dessa largura).
+- **Borda:** 10px (ocupando parte dessa largura).
+
+O **espaço real para o conteúdo** será:  
+300px (largura total) - 20px (padding esquerdo e direito) - 10px (borda esquerda e direita) = **240px** de espaço para o conteúdo.
+
+
+### Resumo das diferenças:
+- **`content-box`:** A largura e a altura referem-se apenas ao conteúdo. O padding e a borda são **somados** à largura e à altura, tornando o tamanho total da caixa maior do que o especificado.
+- **`border-box`:** A largura e a altura incluem o conteúdo, o padding e a borda. O conteúdo é ajustado para garantir que o tamanho total da caixa seja **igual** ao especificado.
+
+### Para que usar cada um?
+- **`content-box`** é bom quando você quer ter controle direto sobre o tamanho do conteúdo sem se preocupar com o padding e a borda.
+- **`border-box`** é mais útil quando você quer garantir que a caixa sempre tenha um tamanho total exato, independente do padding ou da borda.
+
+
+
+
+## Tipos de Display das Divs
+Em CSS, a propriedade `display` controla como os elementos HTML (como `divs`) se comportam visualmente e como são colocados no layout da página. Aqui estão os principais valores que podem ser aplicados ao `display` de uma `div`, e como cada um funciona:
+
+### 1. **`block`**
+- **Explicação**: Define o elemento como um "bloco". Ele ocupa toda a largura disponível, começando em uma nova linha, e empurra outros elementos para a linha seguinte.
+- **Exemplo**: A `div` se comporta como um parágrafo ou um título (`<p>`, `<h1>`).
+- **Uso comum**: Para criar seções de página, caixas, containers de conteúdo.
+- **Limitações**: Só consegue ser usada isoladamente numa linha, não tem como exibir mais de um elemento em uma linha só.
+```css
+div {
+  display: block;
+}
+```
+
+### 2. **`inline`**
+- **Explicação**: Faz o elemento se comportar como um elemento "em linha", ocupando apenas a largura do seu conteúdo. Ele não quebra a linha, então pode ficar lado a lado com outros elementos.
+- **Exemplo**: Similar a como uma tag `<span>` ou `<a>` se comporta.
+- **Uso comum**: Para aplicar estilos sem quebrar o fluxo do texto.
+- **Limitações**: Você não consegue alterar a altura do seu elemento. Só alterações horizontais, como `width`, porém `height`, não.
+```css
+div {
+  display: inline;
+}
+```
+
+### 3. **`inline-block`**
+- **Explicação**: Combina comportamentos de `block` e `inline`. O elemento não quebra a linha, mas pode ter largura e altura definidas, diferente de `inline`.
+- **Exemplo**: Elementos ficam lado a lado, mas você pode controlar suas dimensões.
+- **Uso comum**: Para criar botões ou pequenos blocos que ficam lado a lado.
+```css
+div {
+  display: inline-block;
+}
+```
+
+### 4. **`flex`**
+- **Explicação**: Ativa o **Flexbox**, um modo de layout que distribui os elementos filhos de uma maneira flexível. Ele oferece um controle avançado sobre o alinhamento e o espaço entre os elementos internos.
+- **Exemplo**: Útil para layouts dinâmicos onde você deseja que os elementos se ajustem ao espaço disponível.
+- **Uso comum**: Para layouts responsivos, como menus, galerias de imagens ou grids flexíveis.
+```css
+div {
+  display: flex;
+}
+```
+
+### 5. **`grid`**
+- **Explicação**: Ativa o **Grid Layout**, que permite organizar os elementos filhos em linhas e colunas. Oferece controle mais preciso que o `flex` em alguns casos.
+- **Exemplo**: Ótimo para layouts mais complexos de página, como layouts de revistas ou dashboards.
+- **Uso comum**: Para criar layouts com múltiplas colunas e linhas.
+```css
+div {
+  display: grid;
+}
+```
+
+### 6. **`inline-flex`**
+- **Explicação**: Comporta-se como `flex`, mas o container flexível é tratado como um elemento "em linha", ou seja, não quebra a linha.
+- **Exemplo**: Útil quando você deseja um layout flexível, mas precisa que ele esteja no fluxo de texto, sem quebrar a linha.
+- **Uso comum**: Botões com ícones e textos ou pequenos layouts responsivos embutidos.
+```css
+div {
+  display: inline-flex;
+}
+```
+
+### 7. **`none`**
+- **Explicação**: Remove o elemento completamente do layout visual e da acessibilidade. Ele não ocupa espaço, nem é renderizado.
+- **Exemplo**: Ótimo para esconder temporariamente elementos da página.
+- **Uso comum**: Para esconder modais ou conteúdos dinâmicos que podem aparecer sob certas condições.
+```css
+div {
+  display: none;
+}
+```
+
+### 8. **`table`**
+- **Explicação**: Faz com que o elemento se comporte como uma tabela. Ele cria um contexto de tabela, onde os filhos podem ser tratados como linhas e células.
+- **Exemplo**: A `div` se comporta como uma tag `<table>`.
+- **Uso comum**: Quando você precisa de um layout semelhante a uma tabela sem usar tags `<table>`.
+```css
+div {
+  display: table;
+}
+```
+
+### 9. **`table-row`**
+- **Explicação**: Faz com que o elemento se comporte como uma linha de tabela.
+- **Exemplo**: A `div` age como uma `<tr>`.
+- **Uso comum**: Para criar layouts de tabela com flexibilidade usando apenas `divs`.'
+```css
+div {
+  display: table-row;
+}
+```
+
+### 10. **`table-cell`**
+- **Explicação**: Faz com que o elemento se comporte como uma célula de tabela.
+- **Exemplo**: A `div` age como uma `<td>`.
+- **Uso comum**: Para criar estruturas de tabela usando apenas `divs`, onde você tem controle mais direto do layout.
+```css
+div {
+  display: table-cell;
+}
+```
+
+### 11. **`contents`**
+- **Explicação**: Faz com que o elemento não seja renderizado, mas seus filhos ainda sejam exibidos e façam parte do fluxo de layout como se fossem filhos diretos do pai do elemento.
+- **Exemplo**: O `div` some, mas seus elementos internos continuam no layout.
+- **Uso comum**: Quando você precisa de uma div para organização sem ela interferir no layout.
+```css
+div {
+  display: contents;
+}
+```
+
+### 12. **`list-item`**
+- **Explicação**: Faz o elemento se comportar como um item de lista (`<li>`), permitindo que ele tenha marcadores (bullets).
+- **Exemplo**: O `div` age como um `<li>`.
+- **Uso comum**: Para criar listas personalizadas sem usar tags de lista.
+```css
+div {
+  display: list-item;
+}
+```
+
+
+
+
+- `<span>`: É uma tag genérica, é usada quando não se encontra uma tag semântica para um conteúdo de texto, então utilizamos o `<span>`.
 - `<code>`: Define um bloco de código, assim, a fonte fica Monoespaçada.
 - `<pre>`: Define texto pré-formatado (Não desconsidera os espaços e quebras de linha do texto).
 Exemplo de uso do `<pre>` junto com o `<code>`:
@@ -1127,7 +1374,7 @@ Exemplo de uso do `<pre>` junto com o `<code>`:
 ```
 - `<q>`: Citação em texto, deixa o texto que estiver dentro dessa tag com aspas duplas, quando você quer fazer algo como uma analogia, entre aspas, você usa as aspas normais, mas caso você queira fazer uma citação ao texto de outra pessoa, você usa o `<q>`.
 - `<blockquote>`: Citação em bloco, deixa o texto com uma leve identação para a direita.
-- `<cite>`: Referência uma obra (como título de livro ou site).
+- `<cite>`: Referência uma obra (como título de livro ou site, ou o nome do autor).
 
 
 
@@ -1387,6 +1634,232 @@ Quando há várias instruções conflitantes, você decide qual seguir com base 
 
 
 
+# FUNÇÕES CSS
+Funções no CSS são **mecanismos que permitem realizar cálculos ou transformar valores** para estilizar os elementos de uma página de forma dinâmica e flexível. Pense nelas como pequenas "ferramentas" que você pode usar para ajustar valores de estilo, como cor, tamanho ou posição, de forma mais precisa e até automatizada.
+
+#### Analogia
+Imagine que você está construindo uma casa. As funções no CSS seriam como ferramentas (martelo, régua, serra) que você usa para moldar os materiais de acordo com o que você precisa, seja cortar uma madeira (ajustar um tamanho) ou medir uma parede (calcular uma posição). Essas ferramentas facilitam o trabalho ao invés de você ter que fazer tudo "na mão".
+
+
+## 1. Funções de Cálculo
+
+- `calc()`
+A função `calc()` permite fazer cálculos matemáticos diretamente dentro do CSS. Você pode somar, subtrair, multiplicar e dividir diferentes unidades.
+
+#### Analogia:
+É como usar uma calculadora enquanto você projeta um móvel. Ao invés de adivinhar as medidas, você pode calcular a altura ideal de uma mesa somando as pernas à espessura do tampo.
+
+#### Exemplo:
+```css
+.elemento {
+    width: calc(100% - 20px);
+}
+```
+
+Aqui, estamos dizendo que a largura do elemento deve ser 100% da largura do contêiner, mas subtraindo 20px. Isso é útil quando você precisa de um ajuste fino em um layout responsivo, por exemplo.
+
+
+
+## 2. Funções de Manipulação de Cores
+
+- `rgb()` e `rgba()`
+Essas funções definem cores no formato RGB, onde você controla os níveis de vermelho (R), verde (G) e azul (B). A função `rgba()` adiciona um quarto parâmetro: a opacidade (alpha).
+
+#### Analogia:
+É como misturar tintas. Você tem três latas de tinta (vermelho, verde e azul) e pode misturá-las em diferentes proporções. No caso da função `rgba()`, você também pode adicionar mais ou menos água para deixar a tinta mais transparente (opacidade).
+
+#### Exemplo:
+```css
+.elemento {
+    background-color: rgba(255, 0, 0, 0.5); /* Vermelho com 50% de opacidade */
+}
+```
+
+
+- `hsl()` e `hsla()`
+Outra forma de definir cores é usando o **matiz (hue), saturação e luminosidade**. Aqui, você define a cor base pelo ângulo de matiz (de 0 a 360), a saturação (quanto de cor pura) e a luminosidade (quão clara ou escura a cor é). O `hsla()` também permite controlar a opacidade.
+
+#### Analogia:
+É como ajustar as cores de uma lâmpada LED inteligente, onde você controla o tom da luz (matiz), o quão forte ou fraca a cor aparece (saturação) e o brilho (luminosidade).
+
+#### Exemplo:
+```css
+.elemento {
+    color: hsl(120, 100%, 50%); /* Um verde vibrante */
+}
+```
+
+
+
+## 3. Funções de Transformação
+
+- `rotate()`
+Essa função gira um elemento pelo número de graus que você especificar.
+
+#### Analogia:
+Imagine que você está segurando uma foto em suas mãos. Você pode girar essa foto em diferentes ângulos, como se fosse uma moldura na parede que você ajusta para ficar reta ou inclinada.
+
+#### Exemplo:
+```css
+.elemento {
+    transform: rotate(45deg); /* Gira o elemento 45 graus */
+}
+```
+
+- `scale()`
+Essa função aumenta ou diminui o tamanho de um elemento de acordo com um fator de escala.
+
+#### Analogia:
+Pense em uma lupa. Você pode usá-la para aumentar ou diminuir o tamanho daquilo que você está olhando, mas sem mudar a proporção.
+
+#### Exemplo:
+```css
+.elemento {
+    transform: scale(1.5); /* Aumenta o tamanho em 150% */
+}
+```
+
+
+
+## 4. Funções de Posicionamento
+
+- `translate()`
+Essa função move um elemento de um lugar para outro, usando valores de deslocamento no eixo X (horizontal) e Y (vertical).
+
+#### Analogia:
+Imagine uma peça de xadrez em um tabuleiro. A função `translate()` é como pegar a peça e movê-la para outra posição, sem mudar o seu tamanho ou forma.
+
+#### Exemplo:
+```css
+.elemento {
+    transform: translate(50px, 100px); /* Move o elemento 50px à direita e 100px para baixo */
+}
+```
+
+
+
+## 5. Funções de Desfoque e Filtros
+
+-  `blur()`
+Essa função aplica um efeito de desfoque em um elemento, semelhante ao que acontece quando você olha algo através de um vidro fosco.
+
+#### Analogia:
+Imagine que você está olhando uma foto através de um vidro embaçado. A função `blur()` cria exatamente esse efeito, tornando o conteúdo menos nítido.
+
+#### Exemplo:
+```css
+.elemento {
+    filter: blur(5px); /* Aplica um desfoque de 5px */
+}
+```
+
+- `brightness()`
+Ajusta o brilho de um elemento.
+
+#### Analogia:
+Pense em ajustar o brilho de uma TV. Quando você aumenta o brilho, a imagem fica mais clara; quando diminui, fica mais escura.
+
+#### Exemplo:
+```css
+.elemento {
+    filter: brightness(0.8); /* Reduz o brilho em 80% */
+}
+```
+
+
+
+## 6. Funções de Gradientes
+
+- `linear-gradient()`
+Essa função cria uma transição suave entre duas ou mais cores ao longo de uma linha reta.
+
+#### Analogia:
+É como pintar uma parede com duas cores que vão se misturando conforme você sobe ou desce o pincel.
+
+#### Exemplo:
+```css
+.elemento {
+    background-image: linear-gradient(to right, red, yellow);
+}
+```
+Aqui, a cor muda suavemente do vermelho para o amarelo, ao longo de uma linha horizontal (da esquerda para a direita).
+
+
+
+## 7. Funções de Conteúdo
+
+-  `attr()`
+Essa função permite inserir o valor de um atributo HTML no conteúdo CSS.
+
+#### Analogia:
+É como preencher um campo de formulário automaticamente com base em uma informação já existente, sem que você precise digitar novamente.
+
+#### Exemplo:
+```css
+a::before {
+	content: attr(href); /* Mostra o valor do atributo href antes do link */
+
+}
+```
+
+
+
+
+
+# USO DO `!IMPORTANT`
+É usado para atribuir à um elemento HTML algum tipo de estilo, porém sobreescrevendo qualquer regra de cascata ou especificidade. É perigoso usá-lo, use com cuidado.
+**Exemplo com cascata:**
+```css
+body {
+	background-color: blue;
+}
+
+body {
+	background-color: white !important;
+}
+
+body {
+	background-color: red;
+}
+
+```
+Seguindo a cascata do CSS, era pro fundo da página ficar vermelho, mas como a segunda declaração tem o `!important`, o fundo fica branco ao invés de vermelho.
+
+**Exemplo com especificidade:**
+```css
+#exemplo {
+	font-family: Verdana;
+}
+
+.exemplo_2 {
+	width: 100px;
+}
+
+#exemplo {
+	font-family: "Work Sans" !important;
+}
+
+.exemplo2 {
+	width: 150px !important;
+}
+
+.exemplo2 {
+	width: 200px;
+}
+
+#exemplo {
+	font-family: Arial;
+}
+```
+- Aqui, inicialmente, o elemento que tem o id `exemplo` tem a fonte Verdana. E os elementos que possuem a classe `exemplo_2` tem a largura de 100px.
+- Porém, modificamos a fonte do `exemplo` para a Work Sans. E a largura do `exemplo_2` para 150px. Estes agora, com o `!important`.
+- Modificamos de novo os elementos, agora, `exemplo` possui a fonte Arial, e `exemplo_2` possui 200px de largura.
+
+Qual vai ser o resultado exibido? O `exemplo` com a Work Sans e o `exemplo_2` com 150px de largura. Pois estes detinham o `!important`. **Então independente da cascata, especificidade ou qualquer outra coisa, o resultado exibido vai ser o que estiver com o `!important`.**
+
+
+
+
 # **COMO O CSS É APLICADO**
 Existem três maneiras principais de aplicar CSS a um documento HTML: **inline**, **interno** (ou embutido) e **externo**. Cada uma tem seus usos específicos.
 ## 1) Estilo Inline
@@ -1452,10 +1925,71 @@ p {
 # **PROPRIEDADES CSS**
 CSS tem centenas de propriedades que podem ser usadas para alterar a aparência dos elementos.
 
+### PROPRIEDADES HERDÁVEIS E NÃO HERDÁVEIS
+Propriedades **herdáveis** e **não herdáveis** em CSS definem como certos estilos são aplicados de elementos pais para seus elementos filhos.
+### Propriedades Herdáveis:
+Essas propriedades, por padrão, são transmitidas de um elemento pai para seus filhos, ou seja, os filhos herdam os valores definidos no pai. Isso ocorre para propriedades que fazem sentido serem consistentes ao longo de uma hierarquia de elementos.
+
+#### Exemplos de propriedades herdáveis:
+- **`color`**: A cor do texto.
+- **`font-family`**: A família de fontes.
+- **`font-size`**: O tamanho da fonte.
+- **`line-height`**: A altura da linha.
+- **`text-align`**: O alinhamento do texto.
+- **`visibility`**: A visibilidade do conteúdo (visível ou oculto).
+
+#### Por que são herdáveis?
+Essas propriedades afetam o conteúdo textual e a aparência geral de elementos em uma árvore de elementos HTML. Por exemplo, se você definir uma cor de texto em um `div`, você provavelmente quer que todos os textos dentro dessa `div` tenham a mesma cor, a menos que especifique algo diferente em um nível mais baixo.
+
+
+### Propriedades Não Herdáveis:
+Essas propriedades **não são herdadas** automaticamente pelos elementos filhos. Elas precisam ser definidas especificamente para cada elemento, ou, por padrão, esses elementos usarão os valores iniciais ou padrões fornecidos pelo navegador.
+
+#### Exemplos de propriedades não herdáveis:
+- **`margin`**: A margem ao redor de um elemento.
+- **`padding`**: O preenchimento dentro de um elemento.
+- **`width` / `height`**: A largura e altura de um elemento.
+- **`border`**: A borda de um elemento.
+- **`background-color`**: A cor de fundo de um elemento.
+- **`display`**: O tipo de exibição do elemento (por exemplo, `block`, `inline`, etc.).
+
+#### Por que não são herdáveis?
+Essas propriedades afetam a estrutura ou layout de elementos específicos, e não faz sentido que elas sejam herdadas. Por exemplo, se você define um `margin` em um elemento pai, não significa que você quer que todos os elementos filhos também tenham a mesma margem.
+
+### Como controlar a herança:
+- Você pode forçar a herança de uma propriedade não herdável usando **`inherit`**:
+```css
+div {
+  background-color: inherit; /* Força a herança do background do pai */
+}
+```
+
+Ou você pode evitar a herança de uma propriedade herdável usando **valores explícitos** como `initial` ou definir seu próprio valor:
+```css
+p {
+  color: initial; /* Força o retorno ao valor padrão (normalmente preto) */
+}
+```
+
+- **Propriedades herdáveis** são aquelas que fazem sentido se aplicarem de maneira consistente em um grupo de elementos filhos (como `color`, `font-family`).
+- **Propriedades não herdáveis** são aquelas que afetam o layout ou características específicas de um elemento individual, e não têm um comportamento natural de herança (como `margin`, `width`).
+
+
+
+
 
 ## 1. **Cores e Fundos**
 
 - `color`: Define a cor do texto. Exemplo: `color: #ff0000;` (vermelho)
+1) `color: inherit`: Herda a cor do elemento anterior, o elemento pai. É útil quando você quer garantir que o valor da cor seja o mesmo que o do elemento pai, independentemente de qualquer outra estilização aplicada diretamente ao elemento.
+2) `color: initial`: Esse valor faz com que a cor do elemento retorne ao seu valor inicial, ou seja, o valor padrão definido pelo navegador para aquela propriedade (que, no caso do `color`, geralmente é preto).
+3) `color: unset`: O valor `unset` tem uma definição que depende da propriedade em questão:
+	1. Se a propriedade é **herdável**, como a `color`, o `unset` faz com que a propriedade se comporte como `inherit`, ou seja, herde o valor do elemento pai.
+	2. Se a propriedade **não** é herdável, o `unset` faz com que ela se comporte como `initial`, retornando ao valor inicial (padrão do navegador).
+
+
+
+
 - `background-color`: Define a cor de fundo de um elemento. Exemplo: `background-color: #f0f0f0;` (cinza claro)
 - `background-image`: Define uma imagem como fundo de um elemento. Exemplo: `background-image: url('imagem.jpg');`
 Você consegue colorir coisas em degradê com o `background-image` também. Usando funções do CSS:
@@ -1499,7 +2033,7 @@ Aqui, o plano de fundo fica parado enquanto o conteúdo da página rola sobre el
 O plano de fundo se moverá junto com o conteúdo do elemento, mas apenas dentro da área de rolagem do próprio elemento.
 
 
-
+- `background-size`: Define o tamanho da imagem de fundo. Existem alguns valores, como: `left`, `right`, `top`, `bottom`, `center`, `contain` (caber verticalmente e horizontalmente o que puder, mas sem esticá-los), `cover` (cobrir tudo), `%`, `em`, etc. Você consegue determinar os outros lados do elemento, adicionando 2 ou mais valores, como: `background-size: center bottom;`.
 - `opacity`: Define a opacidade de um elemento (0 a 1). Exemplo: `opacity: 0.5;` (50% opaco)
 
 
@@ -1528,8 +2062,18 @@ font-style -> font-weight -> font-size -> font-family
 ## 3. **Layout e Posicionamento**
 
 - `display`: Define como um elemento deve ser exibido. Valores comuns: `block`, `inline`, `inline-block`, `flex`, `grid`, `none` Exemplo: `display: flex;`
-- `position`: Define o método de posicionamento de um elemento. Valores: `static`, `relative`, `absolute`, `fixed`, `sticky` Exemplo: `position: absolute;`
-- `top`, `right`, `bottom`, `left`: Define a posição de elementos posicionados. Exemplo: `top: 10px; left: 20px;`
+- `position`: Define o método de posicionamento de um elemento. Valores: 
+1) `static`
+2) `relative`
+3) `absolute` (independente de onde ele fique, a configuração vai ser aplicada)
+4) `fixed`
+5) `sticky`
+
+Exemplo: `position: absolute;
+
+`
+- `top`, `right`, `bottom`, `left`: Define a posição de elementos posicionados. Exemplo: `top: 10px; left: 20px;
+- `z-index`: Define em qual camada aquele elemento está.
 - `float`: Posiciona um elemento à esquerda ou direita de seu container. Valores: `left`, `right`, `none` Exemplo: `float: left;`
 - `clear`: Controla o comportamento de elementos ao lado de elementos flutuantes. Valores: `left`, `right`, `both`, `none` Exemplo: `clear: both;`
 
@@ -1546,6 +2090,8 @@ Existem diversas unidades de medida para passar nesses atributos de dimensões. 
 - in (Polegadas)
 - pt
 - pc
+- vw (Viewport Width, largura da tela)
+- vh (Viewport Height, altura da tela)
 Se o valor passado for só o número, sem a unidade de medida depois do número, o navegador já vai previamente entender que estamos falando de pixels (px).
 
 
@@ -1685,12 +2231,156 @@ Em resumo, enquanto o cálculo automático do navegador é conveniente para imag
 
 ## 5. **Margens, Preenchimento e Bordas**
 
-- `margin`: Define a margem externa de um elemento. Exemplo: `margin: 10px;` ou `margin: 10px 20px 30px 40px;` (top, right, bottom, left)
-- `padding`: Define o preenchimento interno de um elemento. Exemplo: `padding: 15px;` ou `padding: 5px 10px;` (vertical, horizontal)
+- `margin`: Define a margem externa de um elemento. Exemplos: 
+1. `margin: 10px;` (Todos os lados possuem 10px.)
+2. `margin: 10px 5px;` (Top e bottom possuem 10px, direita e esquerda possuem 5px.)
+3. `margin: 10px 20px 30px;` (top: 10px, right e left; 20px, bottom: 30px.)
+4. `margin: 10px 20px 30px 40px;` (top: 10px, right: 20px, bottom: 30px, left: 40px.)
+Lembre sempre do sentido horário.
+1) `auto`: Calcula automaticamente horizontalmente para a caixa ficar no centro. Esse cálculo não consegue ser feito verticalmente.
+2) `%`: Se baseia em porcentagem para definir os tamanhos.
+3) Margin Collapsing: Quando 2 elementos de tipo `display: block` estão com por exemplo:
+
+Div 1) `bottom: 10px;`
+Div 2 (Que está em baixo da Div 1)) `top: 15px;`
+
+O resultado será de que o espaçamento entre os 2 elementos não vai ser a soma dos 2, e sim o maior valor entre os 2 vai ser o definido. Nesse caso, o espaçamento entre os 2 será de 15px.
+Vale lembrar que se um elemento tem `display: inline;`, o resultado será a soma dos 2 espaços, não pegará o maior entre os 2, como acontece com o `display: block;`.
+
+4) Caso queira, também existem as propriedades para cada lado, é bom usá-las quando você quer mudar só 1 lado em específico, porém os outros permanecem iguais:
+1. `margin-top`;
+2. `margin-right`;
+3. `margin-bottom`;
+4. `margin-left`.
+
+
+5) Cuidado com os padrões dos navegadores, existem navegadores que colocam `margin` e outros elementos um padrão, onde você adiciona mais ainda no seu código, e o resultado não é o que você estava esperando, o que você pode fazer é:
+```css
+* {
+	margin: 0px
+}
+```
+Aqui, você está aplicando 0 de margem para todos os elementos. Ao invés desse asterísco, poderia ter `html` no lugar, tanto faz.
+
+
+
+- `padding`: Define o preenchimento interno de um elemento. Exemplos: 
+1. `padding: 15px;` (Todos os lados possuem 15px.)
+2. `padding: 5px 10px;` (top e bottom: 5px, right e left: 10px.)
+3. `padding: 15px 10px 5px;` (top: 15px, right e left: 10px, bottom: 5px.)
+4. `padding: 15px 10px 5px 3px;` (top: 15px, right: 10px, bottom: 5px, left: 3px.)
+
+1) Não existe `auto` aqui.
+2) Caso queira, também existem as propriedades para cada lado, é bom usá-las quando você quer mudar só 1 lado em específico, porém os outros permanecerem iguais:
+1. `padding-top`;
+2. `padding-right`;
+3. `padding-bottom`;
+4. `padding-left`.
+
+
+3) Cuidado com os padrões dos navegadores, existem navegadores que colocam `padding` e outros elementos um padrão, onde você adiciona mais ainda no seu código, e o resultado não é o que você estava esperando, o que você pode fazer é:
+```css
+* {
+	padding: 0px
+}
+```
+
+
+
+
 - `border`: Define a borda de um elemento. Exemplo: `border: 1px solid black;`
+### Componentes da Propriedade `border`
+Ela é composta por três partes principais:
+
+- **Largura da borda** (`border-width`)
+- **Estilo da borda** (`border-style`)
+- **Cor da borda** (`border-color`)
+Você pode definir cada uma delas separadamente ou usar a propriedade abreviada `border` para configurar tudo de uma vez.
+
+#### a) **`border-width`** (Largura da borda)
+Especifica a espessura da borda. Você pode usar valores como:
+- Palavras-chave: `thin`, `medium`, `thick`
+
+
+#### b) **`border-style`** (Estilo da borda)
+Define o tipo de traçado da borda. Existem vários estilos que você pode usar:
+
+- `none`: Sem borda
+- `solid`: Uma linha contínua
+- `dashed`: Uma linha pontilhada
+- `dotted`: Uma linha de pontos
+- `double`: Duas linhas
+- `groove`: Uma borda em relevo que parece afundada
+- `ridge`: Uma borda em relevo que parece elevada
+- `inset`: Faz a borda parecer afundada em relação ao elemento
+- `outset`: Faz a borda parecer elevada em relação ao elemento
+
+
+#### c) **`border-color`** (Cor da borda)
+Define a cor da borda. Pode usar nomes de cores, valores em hexadecimal, `rgb`, `rgba`, ou até usar palavras-chave como `transparent` (transparente).
+
+
+
+### Propriedade abreviada `border`
+Você pode combinar tudo em uma única linha usando a propriedade `border`. **A ORDEM É: LARGURA, ESTILO E COR.**
+Exemplo:
+```css
+border: 2px solid blue;
+```
+Isso define uma borda de 2 pixels, sólida, na cor azul.
+
+
+### Borda por lado
+Se quiser aplicar bordas diferentes para cada lado (esquerda, direita, cima, baixo), você pode usar propriedades específicas:
+- `border-top`
+- `border-right`
+- `border-bottom`
+- `border-left`
+Cada uma dessas propriedades aceita as mesmas regras de largura, estilo e cor.
+**Exemplo:**
+```css
+border-top: 5px dotted green;
+border-left: 3px solid black;
+```
+
+
+
+
 - `border-radius`: Arredonda os cantos de um elemento. Exemplo: `border-radius: 5px;`
 
 
+
+
+- `outline`: À primeira vista, ele pode parecer similar ao `border`, mas existe uma diferença importante: o `outline` não afeta o fluxo de layout da página. Ele é uma borda _não encaixada_ ao redor do elemento, geralmente usado para destacar o foco de um elemento, como quando um botão é selecionado.
+### Diferenças principais entre `outline` e `border`:
+- **Espaçamento**: O `outline` não leva em consideração o tamanho do elemento. Ele pode "flutuar" ao redor do elemento, enquanto o `border` ocupa espaço dentro da caixa do elemento.
+- **Não arredondável**: Você não pode aplicar `border-radius` a um `outline`.
+- **Comportamento de foco**: `outline` é frequentemente usado para destacar elementos que estão no foco (por exemplo, ao usar a tecla Tab para navegar em um formulário).
+
+
+### Diferença no comportamento de espaço e layout:
+O `outline` não ocupa espaço no documento. Ele é desenhado "sobre" o conteúdo do elemento, enquanto o `border` empurra o conteúdo para dentro, afetando o tamanho final do elemento.
+
+
+### Componentes da Propriedade `outline`
+Assim como `border`, o `outline` tem largura, estilo e cor.
+
+
+#### a) **`outline-width`** (Largura do contorno)
+Funciona da mesma forma que `border-width`. Define a espessura do contorno.
+
+
+#### b) **`outline-style`** (Estilo do contorno)
+Funciona como o `border-style`, com as mesmas opções: `solid`, `dotted`, `dashed`, etc.
+
+
+#### c) **`outline-color`** (Cor do contorno)
+Define a cor do contorno.
+
+
+
+
+- `outline-offset`: Define a distância entre o contorno `outline` e o elemento.
 
 
 ## 6. **Flexbox**
@@ -1735,7 +2425,22 @@ Em resumo, enquanto o cálculo automático do navegador é conveniente para imag
 - `z-index`: Controla a ordem de empilhamento de elementos posicionados. Exemplo: `z-index: 100;`
 - `box-shadow`: Adiciona sombra a um elemento. Exemplo: `box-shadow: 2px 2px 5px rgba(0,0,0,0.3);`
 - `transform`: Aplica transformações 2D ou 3D a um elemento. Exemplo: `transform: rotate(45deg);`
+- `<position>`: Muda em qual parte uma imagem 2D está sendo exibida.
+### Manipulando imagens 2D com a tag `<position>`
+- `top`: Topo.
+- `right`: Direita.
+- `left`: Esquerda.
+- `bottom`: Fundo, embaixo.
+- `center`: Centro.
 
+**Exemplos de uso:**
+```css
+.box {
+	background-image: url(https://unsplash.com/photos/macbook-pro-on-black-wooden-table-PNbDkQ2DDgM);
+	background-position: top left; /* Canto superior esquerdo da imagem */
+}
+```
+Você consegue misturar os atributos. Como `right center` (Centro da imagem, porém na região direita da imagem).
 
 
 
@@ -1900,6 +2605,24 @@ No CSS:
 - **`.titulo-vermelho`** é o nome da classe (note o ponto `.` antes do nome no CSS).
 - Qualquer elemento com a classe `titulo-vermelho` receberá as propriedades de estilo definidas: cor vermelha e tamanho de fonte 24px.
 
+## USANDO MAIS DE UMA CLASSE EM UM ELEMENTO
+Você pode dar mais de uma classe à um elemento. Por exemplo:
+
+no HTML:
+```html
+<h1 class="vermelho grande">Texto</h1>
+```
+no CSS:
+```css
+.vermelho {
+	color: red;
+}
+
+.grande {
+	font-size: 2em;
+}
+```
+Nesse exemplo, o elemento `<h1>` vai ser vermelho (`vermelho`), e vai ficar com o dobro de seu tamanho (`grande`).
 
 
 
@@ -1992,11 +2715,13 @@ Se um parágrafo tiver o ID `especial`, ele será verde, não vermelho.
 Os seletores são usados para "alcançar" os elementos HTML e aplicar estilos a eles. Eles são como endereços que você usa para encontrar o cômodo certo para decorar.
 
 - **Seletores de Elemento:** Aplicam estilos a todas as instâncias de um determinado tipo de elemento. Você consegue selecionar mais de um elemento por vez, só colocar uma vírgula e o nome do outro elemento. Os elementos colocados irão receber as mesmas configurações que ficarem dentro das chaves.
+
 ```css
 p {
     color: blue;
 }
 ```
+
 - **Seletores de Classe:** Aplicam estilos a elementos que possuem uma determinada classe. Classes são como etiquetas que você pode colar em diferentes móveis (elementos).
 ```css
 .destaque {
@@ -2008,6 +2733,7 @@ Aplicação:
 ```css
 <p class="destaque">Texto destacado.</p>
 ```
+
 - **Seletores de ID:** Aplicam estilos a um único elemento que possui um ID específico. Como um número de série único para um móvel.
 ```css
 #cabecalho {
@@ -2015,9 +2741,124 @@ Aplicação:
 }
 ```
 Aplicação:
-```
+```html
 <div id="cabecalho">Cabeçalho do site</div>
 ```
+
+- **Seletores de atributo:** Aplicam estilos a todos os elementos que tiverem um atributo específico. É caracterizada pelos `[]`.
+```css
+[title] {
+	color: yellow;
+}
+```
+Aqui, todos os elementos que tiverem o atributo `title` neles, terão a cor amarela.
+
+
+
+
+- **Pseudo-classes:** Essas permitem que você selecione elementos que estão em um **estado especial**. Pense nisso como se você tivesse uma regra que só se aplica quando algo **acontece** com o elemento. Aqui estão algumas das mais comuns:
+
+1. **`:hover`**: Quando o mouse está sobre o elemento
+Imagine que você tem um botão e quer que ele mude de cor só quando o usuário passa o mouse sobre ele. Isso é como se o botão ficasse com uma "luz" especial quando alguém olha para ele mais de perto.
+```css
+button:hover {
+    background-color: lightblue;
+}
+```
+
+2. **`:focus`**: Quando o elemento está focado
+Isso se aplica quando um campo, como uma caixa de texto, está "ativo" — ou seja, o usuário clicou nele ou está digitando algo. É como se o campo de texto estivesse **no centro das atenções**.
+```css
+input:focus {
+    border: 2px solid green;
+}
+```
+
+3. **`:nth-child()`**: Seleciona um filho específico dentro de um pai
+Essa pseudo-classe é como se você estivesse escolhendo um **móvel específico dentro de uma sala cheia de móveis iguais**. Você pode escolher, por exemplo, a terceira cadeira de uma fileira.
+```css
+li:nth-child(2) {
+    color: red;
+}
+```
+Aplicação:
+```html
+<ul>
+  <li>Primeiro item</li>
+  <li>Segundo item</li>
+  <li>Terceiro item</li>
+</ul>
+```
+Nesse exemplo, o segundo item da lista (`li:nth-child(2)`) vai ficar com a cor vermelha.
+
+1) `even`: Seleciona os elementos de índices pares.
+2) `odd`: Seleciona os elementos de índices ímpares.
+
+
+ 4. **`:first-child`** e **`:last-child`**: Seleciona o primeiro ou o último filho
+Essas pseudo-classes são como se você estivesse decorando o **primeiro** ou o **último** móvel em uma fila de móveis.
+```css
+p:first-child {
+    font-weight: bold;
+}
+p:last-child {
+    font-style: italic;
+}
+```
+Aplicação:
+```html
+<div>
+  <p>Primeiro parágrafo</p>
+  <p>Segundo parágrafo</p>
+  <p>Último parágrafo</p>
+</div>
+```
+O primeiro parágrafo ficará em negrito, enquanto o último ficará em itálico.
+
+
+5. **`:not()`**: Seleciona tudo, exceto o que você definir
+Essa é como se você estivesse dizendo: "Quero estilizar todos os móveis da sala, menos aquele sofá vermelho."
+```css
+button:not(.cancelar) {
+    background-color: green;
+}
+```
+Aplicação:
+```html
+<button class="confirmar">Confirmar</button>
+<button class="cancelar">Cancelar</button>
+```
+Aqui, todos os botões **que não têm** a classe `cancelar` terão um fundo verde. No exemplo, só o botão de "Confirmar" será afetado.
+
+
+6. **`:nth-of-type()`**: Seleciona um tipo específico de filho
+Parece com o `nth-child()`, mas a diferença é que aqui você escolhe o número de um tipo específico de elemento, por exemplo, o terceiro `parágrafo`, mesmo que haja outros tipos de elementos entre eles.
+```css
+p:nth-of-type(2) {
+    color: blue;
+}
+```
+Aplicação:
+```html
+<div>
+  <p>Primeiro parágrafo</p>
+  <h2>Um título</h2>
+  <p>Segundo parágrafo</p>
+  <p>Terceiro parágrafo</p>
+</div>
+```
+Nesse caso, o segundo parágrafo vai ficar azul, ignorando o fato de que há um título no meio.
+
+7. **`:disabled`**: Se trata de um elemento que foi desabilitado.
+8. **`:required`**: Se trata de um elemento que é obrigatório.
+
+
+
+
+- **Pseudo-Elementos**: São elementos que são adicionados pelo próprio CSS, exemplos:
+1. `::before`: Antes de um elemento, faça tal coisa. Esse pseudo-elemento precisa de um `content; "";` dentro dele, mesmo que ela não tenha nada dentro.
+2. `::after`: Depois de um elemento, faça tal coisa. Esse pseudo-elemento precisa de um `content; "";` dentro dela, mesmo que ela não tenha nada dentro.
+3. `::first-line`: Pega a primeira linha de um texto. E isso se adapta com o tamanho da tela do dispositivo.
 
 
 
@@ -2038,12 +2879,354 @@ Este código reduz o tamanho da fonte dos parágrafos para 12px em telas menores
 
 
 
+
+
 # **BOAS PRÁTICAS EM CSS**
 
 - **Manter o CSS organizado e bem comentado.**
 - **Reutilizar classes e evitar repetição de código.**
 - **Usar um arquivo externo para facilitar a manutenção.**
 - **Evitar estilos inline para maior consistência e facilidade de modificação.**
+
+
+
+
+
+
+# **FLEXBOX CSS**
+**O que é o Flexbox?**
+O Flexbox (ou _Flexible Box Layout_) é um sistema de layout em CSS que foi criado para facilitar o alinhamento e a distribuição de itens dentro de um contêiner, mesmo quando o tamanho dos itens ou do contêiner é dinâmico ou desconhecido. Ele é ideal para construir interfaces responsivas, permitindo que os elementos dentro de um contêiner se ajustem de acordo com o espaço disponível.
+
+
+
+### **1. Conceito Básico**
+Para usar o Flexbox, é necessário definir um elemento como contêiner flexível, usando a propriedade `display: flex;`. Isso transforma os elementos filhos dentro do contêiner em _"itens flexíveis"_ e os comportamentos de layout dentro desse contêiner passam a ser controlados pelas propriedades do Flexbox.
+
+**Exemplo básico:**
+HTML:
+```html
+<div class="flex-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+</div>
+```
+
+CSS:
+```css
+  .flex-container {
+    display: flex;
+  }
+
+  .item {
+    background-color: lightblue;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #000;
+  }
+```
+No exemplo acima, o `div` com a classe `flex-container` é o **contêiner flexível** e os `divs` internos (`item`) são os **itens flexíveis**.
+
+
+
+### **2. Eixos do Flexbox**
+O Flexbox trabalha com dois eixos principais:
+- **Eixo principal (main axis)**: Por padrão, este é o eixo horizontal, onde os itens são dispostos da esquerda para a direita. No entanto, isso pode mudar dependendo da propriedade `flex-direction`.
+- **Eixo cruzado (cross axis)**: Este é o eixo perpendicular ao eixo principal. Ou seja, se o eixo principal é horizontal, o eixo cruzado será vertical, e vice-versa.
+
+
+
+### **3. Propriedades do Contêiner Flexível**
+Estas são as principais propriedades que controlam o comportamento de um contêiner Flexbox:
+
+#### 3.1 `flex-direction`
+Define a direção do fluxo dos itens no contêiner.
+
+- `row`: Itens são organizados na linha (horizontal) (padrão).
+- `row-reverse`: Itens são organizados na linha, mas em ordem reversa.
+- `column`: Itens são organizados em coluna (vertical).
+- `column-reverse`: Itens são organizados em coluna, mas de baixo para cima.
+```css
+.flex-container {
+  display: flex;
+  flex-direction: row; /* ou row-reverse, column, column-reverse */
+}
+```
+
+#### 3.2 `justify-content`
+Alinha os itens ao longo do **eixo principal** (horizontal por padrão).
+
+- `flex-start`: Alinha os itens ao início do contêiner (padrão).
+- `flex-end`: Alinha os itens ao final do contêiner.
+- `center`: Alinha os itens no centro.
+- `space-between`: Espaço igual entre os itens, sem espaço nas extremidades.
+- `space-around`: Espaço igual entre os itens, com espaço nas extremidades.
+- `space-evenly`: Espaçamento igual entre os itens e nas extremidades.
+```css
+.flex-container {
+  justify-content: center; /* ou flex-start, flex-end, space-between, etc. */
+}
+```
+
+
+
+#### 3.3 `align-items`
+Controla o alinhamento dos itens no **eixo cruzado** (vertical por padrão).
+
+- `flex-start`: Alinha os itens ao topo do contêiner.
+- `flex-end`: Alinha os itens ao final do contêiner.
+- `center`: Alinha os itens no centro vertical do contêiner.
+- `baseline`: Alinha os itens na linha base do conteúdo.
+- `stretch`: Faz os itens se esticarem para preencher o contêiner (padrão se não houver tamanho fixo).
+```css
+.flex-container {
+  align-items: center; /* ou flex-start, flex-end, baseline, etc. */
+}
+```
+
+
+
+#### 3.4 `align-content`
+Define como múltiplas linhas (caso haja um "wrap") são distribuídas no contêiner, em relação ao **eixo cruzado**.
+
+- `flex-start`: Linhas empilhadas no topo.
+- `flex-end`: Linhas empilhadas no final.
+- `center`: Linhas empilhadas no centro.
+- `space-between`: Espaço igual entre as linhas.
+- `space-around`: Espaço igual ao redor de cada linha.
+- `stretch`: Linhas esticam para ocupar o contêiner inteiro (padrão).
+```css
+.flex-container {
+  align-content: space-between; /* ou flex-start, flex-end, center, etc. */
+}
+```
+
+
+
+#### 3.5 `flex-wrap`
+Define se os itens devem quebrar em múltiplas linhas, caso não caibam em uma só linha.
+
+- `nowrap`: Todos os itens permanecem em uma linha (padrão).
+- `wrap`: Itens quebram em novas linhas quando necessário.
+- `wrap-reverse`: Itens quebram em novas linhas, mas com a ordem inversa.
+```css
+.flex-container {
+  flex-wrap: wrap; /* ou nowrap, wrap-reverse */
+}
+```
+
+
+
+
+### **4. Propriedades dos Itens Flexíveis**
+
+Agora, vamos ver as propriedades que você pode aplicar diretamente nos **itens flexíveis**.
+
+#### 4.1 `flex-grow`
+
+Determina quanto um item pode crescer em relação aos outros itens. O valor é numérico e a proporção de crescimento entre os itens é baseada nos seus valores.
+
+- `0`: O item não cresce além de seu tamanho inicial (padrão).
+- `1` ou mais: O item pode crescer para preencher o espaço disponível.
+
+```css
+.item {
+  flex-grow: 1; /* O item pode crescer */
+}
+```
+#### 4.2 `flex-shrink`
+Define a capacidade do item de encolher, se necessário. Também usa valores numéricos.
+
+- `0`: O item não pode encolher.
+- `1`: O item pode encolher proporcionalmente ao espaço disponível.
+
+
+#### 4.3 `flex-basis`
+Determina o tamanho inicial do item antes de qualquer espaço extra ser distribuído. Pode ser um valor de comprimento (ex: `px`, `em`, `%`) ou a palavra `auto`.
+```css
+.item {
+  flex-basis: 200px; /* Tamanho inicial do item */
+}
+```
+
+
+#### 4.4 `align-self`
+Permite que o item tenha um alinhamento diferente dos outros itens no eixo cruzado.
+
+- `auto`: Usa o valor do `align-items` do contêiner (padrão).
+- `flex-start`: Alinha o item no início do contêiner.
+- `flex-end`: Alinha o item no final do contêiner.
+- `center`: Alinha o item no centro vertical do contêiner.
+- `baseline`: Alinha o item na linha base do conteúdo.
+- `stretch`: Faz o item se esticar para preencher o contêiner.
+
+
+
+
+## 5. Exemplo Completo
+HTML:
+```html
+<div class="flex-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+</div>
+```
+
+CSS:
+```css
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 300px;
+    background-color: lightgray;
+}
+
+  .item {
+    flex-grow: 1;
+    flex-basis: 100px;
+    margin: 10px;
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+```
+
+
+
+
+## **6. Recapitulando Propriedades e Atributos do Flexbox**
+Aqui está uma lista rápida das propriedades que controlam o Flexbox:
+
+#### **Propriedades do Contêiner**
+- `display: flex;`
+- `flex-direction: row | row-reverse | column | column-reverse`
+- `justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly`
+- `align-items: flex-start | flex-end | center | baseline | stretch`
+- `align-content: flex-start | flex-end | center | space-between | space-around | stretch`
+- `flex-wrap: nowrap | wrap | wrap-reverse`
+
+#### **Propriedades dos Itens**
+- `flex-grow: 0 | 1 | ...`
+- `flex-shrink: 0 | 1 | ...`
+- `flex-basis: auto | (valor)`
+- `align-self: auto | flex-start | flex-end | center | baseline | stretch`
+
+
+
+
+# Flex Sizing
+O conceito de **flex sizing** refere-se a como os elementos dentro de um container Flexbox (itens flexíveis) se ajustam e ocupam o espaço disponível com base nas propriedades do modelo Flexbox, como `flex-grow`, `flex-shrink`, e `flex-basis`. Essas propriedades controlam o comportamento de redimensionamento dos itens flexíveis, permitindo que você crie layouts que se adaptem de forma eficiente a diferentes tamanhos de tela.
+
+Vamos entender cada uma dessas propriedades que formam a base do "flex sizing":
+
+
+### 1. **`flex-grow`** (Crescimento Flexível)
+A propriedade `flex-grow` controla o **quanto um item deve crescer em relação aos outros** dentro de um container flexível quando houver **espaço extra disponível**. O valor de `flex-grow` é um número, onde:
+
+- Se `flex-grow: 0`, o item não cresce e mantém seu tamanho original, mesmo que haja espaço extra.
+- Se `flex-grow: 1`, o item pode crescer para ocupar todo o espaço extra disponível no container.
+- Se vários itens tiverem `flex-grow: 1`, eles dividirão o espaço extra igualmente.
+- Se um item tiver `flex-grow: 2` e outro `flex-grow: 1`, o primeiro item crescerá duas vezes mais que o segundo.
+
+**Exemplo:**
+```css
+.item1 {
+  flex-grow: 2; /* Este item vai crescer mais */
+}
+
+.item2 {
+  flex-grow: 1; /* Este item vai crescer menos */
+}
+```
+Aqui, o `.item1` ocupará duas vezes mais espaço que o `.item2` se houver espaço extra.
+
+
+
+### 2. **`flex-shrink`** (Encolhimento Flexível)
+A propriedade `flex-shrink` controla **quanto um item pode encolher** quando **não houver espaço suficiente** no container flexível. O valor de `flex-shrink` também é um número:
+
+- Se `flex-shrink: 0`, o item não encolherá, mantendo seu tamanho original, mesmo que não haja espaço suficiente no container.
+- Se `flex-shrink: 1`, o item pode encolher para se ajustar ao espaço disponível.
+- Se vários itens tiverem `flex-shrink: 1`, eles encolherão igualmente.
+- Se um item tiver `flex-shrink: 2` e outro `flex-shrink: 1`, o primeiro item encolherá duas vezes mais que o segundo.
+
+**Exemplo:**
+```css
+.item1 {
+  flex-shrink: 2; /* Este item vai encolher mais */
+}
+
+.item2 {
+  flex-shrink: 1; /* Este item vai encolher menos */
+}
+```
+Se o container ficar muito pequeno, o `.item1` vai encolher mais do que o `.item2`, tornando-se proporcionalmente menor.
+
+
+
+### 3. **`flex-basis`** (Tamanho Base Flexível)
+A propriedade `flex-basis` define o **tamanho inicial** de um item flexível antes de ele começar a crescer ou encolher com base nas propriedades `flex-grow` ou `flex-shrink`. Basicamente, ela especifica o "tamanho ideal" do item.
+
+Você pode definir o `flex-basis` com um valor de comprimento (`px`, `%`, etc.) ou deixar como `auto` (padrão, que usa o tamanho definido pelas propriedades de largura e altura).
+
+- Se `flex-basis: 200px`, o item terá 200px de largura antes de aplicar as regras de crescimento e encolhimento.
+- Se `flex-basis: 0`, o item começará sem largura e dependerá totalmente de `flex-grow` para ocupar espaço.
+
+**Exemplo:**
+```css
+.item1 {
+  flex-basis: 200px; /* Este item começa com 200px de largura */
+}
+
+.item2 {
+  flex-basis: 100px; /* Este item começa com 100px de largura */
+}
+```
+Aqui, o `.item1` terá o dobro do tamanho inicial do `.item2`, mas ainda pode crescer ou encolher com base em `flex-grow` e `flex-shrink`.
+
+
+
+### 4. **`flex` (Shorthand)**: Combinação de `flex-grow`, `flex-shrink`, e `flex-basis`
+A propriedade `flex` é uma abreviação que combina os três parâmetros: `flex-grow`, `flex-shrink`, e `flex-basis`. A sintaxe é:
+```css
+flex: <flex-grow> <flex-shrink> <flex-basis>;
+```
+
+Por exemplo, ao definir:
+```css
+.item {
+  flex: 1 1 200px;
+}
+```
+Isso significa que o item pode **crescer** (`flex-grow: 1`), **encolher** (`flex-shrink: 1`), e tem um **tamanho base inicial de 200px** (`flex-basis: 200px`).
+
+Se você definir `flex: 1`, isso é o mesmo que definir `flex: 1 1 0`, ou seja, o item cresce e encolhe igualmente e seu tamanho base é 0.
+
+### Exemplo Final:
+```css
+.item1 {
+  flex: 2 1 100px; /* Cresce mais e tem um tamanho base de 100px */
+}
+
+.item2 {
+  flex: 1 2 200px; /* Cresce menos e encolhe mais, com tamanho base de 200px */
+}
+```
+
+
+### Resumo:
+- **`flex-grow`**: Controla o crescimento de um item quando há espaço extra.
+- **`flex-shrink`**: Controla o encolhimento de um item quando não há espaço suficiente.
+- **`flex-basis`**: Define o tamanho inicial de um item antes de crescer ou encolher.
+- **`flex` (shorthand)**: Combina `flex-grow`, `flex-shrink`, e `flex-basis` em uma única propriedade.
+
+Essas três propriedades juntas formam o comportamento de "flex sizing" em layouts flexíveis, permitindo que os itens dentro de um container se ajustem de maneira eficiente, seja para expandir ou contrair conforme o espaço disponível.
+
+
 
 
 
@@ -2100,7 +3283,7 @@ Com a transparência, as outras formas recebem um novo valor, o Alpha.
 
 
 
-# QUAL A MELHOR FORMA DE ESCREVER AS CORES NO VSCODE, BASEADO NOS 5 TIPOS QUE EXISTEM
+# QUAL A MELHOR FORMA DE ESCREVER AS CORES NO VSCODE, BASEADO NOS 4 TIPOS QUE EXISTEM
 
 Se você não tem o código expecífico da cor que queira representar, e quer representar ela, a melhor forma de você conseguir dizer cores específicas, sem ser limitado pelos nomes das cores, é usando o RGB/RGBA.
 
@@ -2162,7 +3345,7 @@ Sites para descobrir uma fonte de uma imagem:
 - https://www.whatfontis.com/
 - https://www.fontsquirrel.com/
 - https://www.myfonts.com/
-Para importar uma fonte de outro lugar, você precisa do código embedado dela. Pode ser tanto um `<link>` (HTML) quanto um `@import`(CSS) (Preferível).
+Para importar uma fonte de outro lugar, você precisa do código embedado dela. Pode ser tanto um `<link>` (HTML) quanto um `@import`(CSS) (O `<link>` é um pouco mais rápido que o `@import`, então geralmente é preferível que você use o `<link>` dentro do documento HTML.).
 
 Existem diversos tipos de fonte, mas os principais são:
 - Serifada: Fonte que tem "frufru", é um pouco mais detalhada. Indicada para papéis;
@@ -2185,14 +3368,21 @@ Com o `font-size`, podemos aumentar e diminuir o tamanho das fontes, temos forma
 - pc
 
 2. Medidas Relativas
-- em (Baseada no tamanho do "M" da fonte)
+- em (Baseada no tamanho da fonte do pai, se o pai tiver 16px, o elemento em questão com `2em` terá 32px.)
 - ex (Baseada no tamanho do "x" da fonte)
-- rem (Baseada no tamanho do "M" da fonte, só que no root)
+- rem (Baseada no tamanho do "M" da fonte, só que no root.)
+### Root
+É o tamanho padrão já definido no navegador.
+Usamos o `rem` porque o `em` pega o tamanho do pai, só que: se o tamanho do pai for um tamanho muito grande, e queremos nos basear no tamanho padrão que seria se aquele elemento pai não tivesse sido alterado. Usamos o `rem` para isso.
+
+Para alterar o tamanho padrão dos elementos no root, você seleciona o elemento html no seu CSS e muda o que quiser mudar.
+
+
 - vw
 - vh (Baseada no tamanho do dispositivo)
 - %
 
-**A W3 recomenda a utilização SOMENTE do px e do em.**
+**A W3 recomenda a utilização SOMENTE do px, em e do rem.**
 16px é o tamanho padrão das fontes, geralmente.
 16px geralmente = 1em
 
