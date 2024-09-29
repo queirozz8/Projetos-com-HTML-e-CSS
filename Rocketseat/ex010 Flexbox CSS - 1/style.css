@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.item {
+    background-color: lightblue;
+    padding: 50px;
+    margin: 5px;
+    border: 1px solid #000;
+    flex: 1;
+    width: 500px;
+    text-align: center;
+    font-size: 60px;
+}
+
+.item:nth-last-child(2) {
+    background: lightcoral;
+}
