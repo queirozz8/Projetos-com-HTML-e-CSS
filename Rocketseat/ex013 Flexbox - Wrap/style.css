@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    border: 5px dashed red;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 800px;
+}
+
+.items {
+    flex-basis: 500px;
+    height: 500px;
+    border: 1px solid;
+    text-align: center;
+    font-size: 5em;
+    background-color: blueviolet;
+    color: white;
+}
