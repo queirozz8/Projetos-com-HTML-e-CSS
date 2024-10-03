@@ -1,0 +1,12 @@
+.flexbox {
+    display: flex;
+    border: 1px solid red;
+    height: 80vh;
+}
+
+.item {
+    background: gray;
+    border: 1px solid;
+    flex: 1;
+    font-size: 2em;
+}
