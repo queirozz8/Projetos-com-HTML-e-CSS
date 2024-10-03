@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+}
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 3em
+}
+
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+main {
+    background: lightblue;
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+main section:nth-child(1) {
+    background: lightgoldenrodyellow;
+    flex: 4;
+}
+
+main section:nth-child(2) {
+    background: lightsalmon;
+    flex: 0 0 450px;
+}
+
+main section:nth-child(3) {
+    background: lightpink;
+    flex: 3;
+}
+
+aside {
+    background: lightgreen;
+    flex: 1;
+}
