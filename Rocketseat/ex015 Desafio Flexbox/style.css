@@ -1,46 +1,48 @@
 body {
     display: flex;
     flex-direction: column;
-    font-family: "Work Sans", Arial, Helvetica, sans-serif;
-    font-size: 22px;
-    background-color: #E9EDF3;
     justify-content: center;
     align-items: center;
     height: 70vh;
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    background-color: #E9EDF3;
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1500px;
+    background-color: white;
     border: 1px solid;
     border-radius: 20px;
     padding: 2rem;
-    background: white;
-    width: 1500px;
 }
 
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 10px;
 }
 
 ul {
     display: flex;
-    list-style: none;
-    gap: .8rem;
     align-items: center;
+    list-style: none;
+    gap: 0.8rem;
 }
 
 button {
-    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+    font-size: 23px;
     color: #D9C8FF;
     background-color: #3817EE;
     border-radius: 5px;
     padding: 10px;
-    width: 150px;
-    height: 50px;
-    font-size: 23px;
-    font-family: "Work Sans", Arial, Helvetica, sans-serif;
+    cursor: pointer;
 }
 
 h2 {
