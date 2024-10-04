@@ -16,9 +16,9 @@ aside, main {
 
 aside {
     background-color: #F3F5F7;
-    flex-basis: 25%;
+    flex: 0 0 25%;
 }
 
 main {
-    flex-basis: 75%;
+    flex: 1 0 0;
 }
