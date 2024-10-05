@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 80vh;
+    gap: .8rem;
+    list-style: none;
+}
+
+ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 600px;
+    height: 272px;
+    text-align: center;
+    line-height: 250px;
+    background-color: bisque;
+    border: 2px solid gray;
+}
+
+img {
+    height: 260px;
+}
