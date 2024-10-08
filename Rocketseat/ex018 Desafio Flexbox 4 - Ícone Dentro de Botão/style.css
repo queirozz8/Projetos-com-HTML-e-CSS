@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    background-color: #E9EDF3;
+    overflow: hidden;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 50vh;
+    background-color: #FFFFFF;
+    border: 1px solid;
+    gap: 4.4rem;
+}
+
+button {
+    font-family: "Work Sans";
+    font-size: 2em;
+    background-color: #3C18F2;
+    color: #FFFFFF;
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
+}
+
+svg {
+    width: 30px;
+    background-color: #7F6CF6;
+}
