@@ -21,13 +21,14 @@ body {
 }
 
 button {
-    font-family: "Work Sans";
-    font-size: 2em;
-    background-color: #3C18F2;
-    color: #FFFFFF;
     width: 200px;
     height: 70px;
+    font-family: "Work Sans";
+    font-size: 2em;
+    color: #FFFFFF;
+    background-color: #3C18F2;
     cursor: pointer;
+    line-height: 0;
 }
 
 svg {
