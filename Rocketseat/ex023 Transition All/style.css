@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box-red, .box-green {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.box-red {
+    background-color: red;
+    transition: all 1s ease 4s;
+}
+
+.box-red:hover {
+    background-color: #ff0;
+    transition-property: background-color;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    transition-delay: 4s;
+}
+
+.box-green {
+    background-color: #0f0;
+    transition: all 1s linear 0s;
+}
+
+.box-green:hover {
+    transition: all 1s cubic-bezier(.29, 1.01, 1, -0.68);
+    background-color: rgb(255, 0, 208);
+    width: 300px;    
+    height: 300px;
+    border-radius: 8px;
+}
