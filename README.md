@@ -5,4 +5,4 @@
 
 - "Bloco de Notas de HTML e CSS" é um bloco de notas que eu criei para estudar HTML5 e CSS3. Nele, tem minhas anotações que me ajudam a entender melhor essas tecnologias. Só um detalhe: se você quiser ler o documento, procure não ler em qualquer bloco de notas, vai ficar um pouco estranho, pois esse documento é escrito em Markdown, então existem elementos que formatação de texto que não vão ser interpretados caso o arquivo .md seja aberto num bloco de notas padrão. Eu recomendo você utilizar o Obsidian (Software que eu escrevi esse bloco de notas) ou o Notion, pois esse problema não acontece.
 
-# Mais coisas estão por vir! Obrigado por ler!
+<h1>Mais coisas estão por vir! Obrigado por ler!</h1>
