@@ -1,0 +1,55 @@
+.ball {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: red;
+    position: relative;
+
+    animation-name: example-two;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
+}
+
+@keyframes example-one {
+    from {
+        background-color: blueviolet;
+    }
+    
+    to {
+        background-color: rosybrown;
+    }
+}
+
+@keyframes example-two {
+    0% {
+        background-color: blueviolet;
+        left: 0;
+        top: 0;
+    }
+
+    25% {
+        background-color: rosybrown;
+        left: 600px;
+        top: 0;
+    }
+
+    50% {
+        background-color: blue;
+        left: 600px;
+        top: 600px;
+    }
+
+    75% {
+        background-color: yellow;
+        left: 0;
+        top: 600px;
+    }
+
+    100% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+    }
+}
