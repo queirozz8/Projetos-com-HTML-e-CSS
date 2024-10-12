@@ -2063,15 +2063,70 @@ font-style -> font-weight -> font-size -> font-family
 
 - `display`: Define como um elemento deve ser exibido. Valores comuns: `block`, `inline`, `inline-block`, `flex`, `grid`, `none` Exemplo: `display: flex;`
 - `position`: Define o método de posicionamento de um elemento. Valores: 
-1) `static`
-2) `relative`
-3) `absolute` (independente de onde ele fique, a configuração vai ser aplicada)
-4) `fixed`
-5) `sticky`
 
-Exemplo: `position: absolute;
+1) `static`: Padrão. O elemento segue o fluxo natural da página.
+**Explicação técnica:** O posicionamento estático é o padrão para todos os elementos em HTML. Quando você não especifica nenhuma regra de posicionamento, o CSS usa o `position: static;`, e os elementos aparecem na ordem em que são escritos no código, um embaixo do outro.
 
-`
+**Analogias:** Imagine que você está organizando livros em uma estante, onde cada livro tem seu lugar fixo, um ao lado do outro ou um embaixo do outro. Eles não se movem, apenas seguem a ordem que você coloca. Esse é o comportamento padrão do `position: static;`.
+
+Exemplo prático:
+```css
+div {
+  position: relative;
+  top: 20px; /* Move o elemento 20px para baixo */
+  left: 10px; /* Move o elemento 10px para a direita */
+}
+```
+Aqui, o elemento vai se mover, mas ainda ocupará o espaço original, ou seja, os outros elementos agirão como se ele ainda estivesse lá, mesmo após o movimento.
+
+
+2) `relative`: O elemento se posiciona em relação a onde estaria originalmente.
+**Explicação técnica:** O `position: relative;` mantém o elemento no seu fluxo normal na página, como o `static`, mas agora você pode "ajustar" sua posição em relação a onde ele estaria originalmente. Isso é feito usando as propriedades `top`, `right`, `bottom` e `left`.
+
+**Analogias:** Pense em um objeto colado na parede de um quarto. O objeto está fixo em um ponto da parede, mas você pode deslizar ele um pouco para cima, para o lado, ou para baixo sem que ele saia totalmente do lugar. O posicionamento relativo é como se o objeto tivesse a liberdade de "mover-se um pouco" em torno de sua posição padrão.
+
+
+3) `absolute`: O elemento é posicionado em relação ao seu contêiner pai posicionado ou ao `body`.
+**Explicação técnica:** O `position: absolute;` remove completamente o elemento do fluxo normal da página. Agora, o posicionamento desse elemento é feito em relação ao seu primeiro "elemento pai" que tem `position: relative;`, `absolute;`, ou `fixed;`. Se nenhum elemento pai tiver um desses posicionamentos, o elemento é posicionado em relação ao `body` da página.
+
+**Analogias:** Imagine que você tem um quadro que está pendurado em uma parede dentro de um quarto. Quando você diz que ele tem `position: absolute;`, é como se estivesse dizendo que ele pode ser colocado em qualquer lugar da parede, e agora ele não afeta mais o que está ao redor — ele está "flutuando" livremente, ignorando os outros móveis do quarto.
+
+
+4) `fixed`: O elemento é fixo em relação à janela do navegador e não se move quando a página é rolada.
+**Explicação técnica:** O `position: fixed;` é semelhante ao `absolute` no sentido de que o elemento sai do fluxo normal da página. No entanto, ao contrário do absoluto, o elemento é posicionado em relação à janela de visualização (viewport) do navegador e permanece fixo na tela mesmo quando o usuário rola a página para cima ou para baixo.
+
+**Analogias:** É como um ímã preso na tela do seu computador. Não importa o quanto você mexa ou role a tela, o ímã fica sempre no mesmo lugar, fixo.
+
+**Exemplo prático:**
+```css
+div {
+  position: fixed;
+  top: 0; /* Fica fixo no topo da janela */
+  left: 0; /* Fica fixo no canto esquerdo */
+}
+```
+Neste caso, a `div` permanecerá sempre visível no canto superior esquerdo, mesmo que você role a página.
+
+
+5) `sticky`: O elemento é relativo até atingir uma posição definida, momento em que se "gruda" e age como fixo.
+**Explicação técnica:** O `position: sticky;` é um mix entre o `relative` e o `fixed`. Ele se comporta como `relative` até que você role a página, momento em que ele "gruda" na posição especificada e se comporta como `fixed`.
+
+**Analogias:** Imagine que você está passando uma folha por uma impressora e, em um certo ponto, a impressora "segura" um pedaço do papel e o mantém fixo no lugar enquanto o restante continua se movendo. O sticky faz isso com elementos na página.
+
+**Exemplo prático:**
+```css
+div {
+  position: sticky;
+  top: 10px; /* O elemento vai "grudar" quando alcançar 10px do topo */
+}
+```
+Aqui, o elemento será rolado normalmente com a página até que atinja 10px do topo da janela de visualização, quando ele "gruda" e fica fixo.
+
+### Como esses diferentes tipos de posicionamento interagem?
+Agora que você entendeu as diferenças, é importante observar como o comportamento de um tipo de posicionamento afeta o fluxo dos outros elementos ao redor. Quando um elemento é posicionado de forma `absolute` ou `fixed`, ele é retirado do fluxo normal, então outros elementos vão ignorar sua existência, ocupando o espaço que ele deixou. Já no `relative` ou `sticky`, o elemento ainda afeta os outros, mesmo que ele se mova visualmente.
+
+
+
 - `top`, `right`, `bottom`, `left`: Define a posição de elementos posicionados. Exemplo: `top: 10px; left: 20px;
 - `z-index`: Define em qual camada aquele elemento está.
 - `float`: Posiciona um elemento à esquerda ou direita de seu container. Valores: `left`, `right`, `none` Exemplo: `float: left;`
@@ -2405,12 +2460,62 @@ Define a cor do contorno.
 
 ## 8. **Transições e Animações**
 
-- `transition`: Define uma transição suave entre estados de um elemento. Exemplo: `transition: all 0.3s ease;`
-- `animation`: Define uma animação para um elemento. Exemplo: `animation: slidein 3s ease-in-out infinite;`
+- `transition-property`: Define a propriedade CSS que vai ter a transição. Exemplo: `transition-property: background-color;`
+- `transition-duration`: Define a duração da animação. Exemplo: `transition-duration: 1s;`
+- `transition`: Shorthand. Define uma transição suave entre estados de um elemento. Ordem: `property`, `duration`, `transition-timing-function`, `delay`. Exemplo: `transition: all 0.3s ease 2s;`
+- `transition-timing-function`: Define a transição que um elemento vai fazer.
+### Lista de transições
+1. `ease` - Início lento, rápido e final lento (este é o padrão)
+2. `linear` - Mesma velocidade do início ao fim
+3. `easy-in` - Início lento
+4. `easy-out` - Final lento
+5. `easy-in-out` - Início e fim lentos
+6. `cubic-bezier(n,n,n,n)` - Permite definir seus próprios valores em uma função `cubic-bezier`
+
+- `transition-delay`: Define um tempo de espera para que a animação normal aconteça. Ela acontece sempre antes de tudo.
+
+
+- `@keyframes`: É a parte onde você define as mudanças visuais em diferentes "pontos-chave" da sua animação. Ele funciona como o roteiro da sua animação, dizendo o que acontece no começo, no meio e no fim.
+**Sintaxe dos `@keyframes`:**
+Aqui está um exemplo básico de como você usaria `@keyframes` para criar uma animação que muda a cor de um quadrado de azul para vermelho
+```css
+@keyframes mudarCor {
+  0% { background-color: blue; }
+  100% { background-color: red; }
+}
+```
+- `from`: Define o início do keyframe
+- `to`: Define o final do keyframe
+Você também pode usar porcentagens para definir como o keyframe ficará.
+
+
+- `animation`: Shorthand. Define uma animação para um elemento. Ordem dos valores:
+
+1) **Nome da animação (`animation-name`)**: O nome da keyframe a ser utilizada.
+2) **Duração (`animation-duration`)**: O tempo que a animação leva para ser completada (por exemplo, `2s`, `500ms`).
+3) **Função de temporização (`animation-timing-function`)**: Define a aceleração/desaceleração da animação. Alguns valores comuns são `ease`, `linear`, `ease-in`, `ease-out`.
+4) **Tempo de atraso (`animation-delay`)**: O tempo antes da animação começar (por exemplo, `1s`).
+5) **Número de repetições (`animation-iteration-count`)**: Quantas vezes a animação será repetida. Pode ser um número específico ou `infinite` para loops infinitos.
+6) **Direção da animação (`animation-direction`)**: Define se a animação vai reverter sua direção em cada repetição (exemplo: `normal`, `reverse`, `alternate`, `alternate-reverse`).
+7) **Modo de preenchimento (`animation-fill-mode`)**: Especifica o que acontece com os estilos do elemento antes ou depois da animação (exemplo: `none`, `forwards`, `backwards`, `both`).
+8) **Estado de execução (`animation-play-state`)** (opcional): Define se a animação está em execução ou pausada (exemplo: `running`, `paused`).
+
+ 
+Exemplo: 
+```css
+animation: fadeIn 3s ease-in-out 1s 2 alternate forwards;
+```
+1) **`fadeIn`** é o nome da animação;
+2) **`3s`** é a duração;
+3) **`ease-in-out`** é a função de temporização;
+4) **`1s`** é o atraso;
+5) **`2`** indica que a animação será repetida duas vezes;
+6) **`alternate`** faz com que a animação vá e volte;
+7) **`forwards`** mantém o estilo final da animação após a conclusão.
 
 
 
-
+2
 ## 9. **Visibilidade e Overflow**
 
 - `visibility`: Controla se um elemento é visível ou não. Valores: `visible`, `hidden` Exemplo: `visibility: hidden;`
@@ -2794,8 +2899,18 @@ Nesse exemplo, o segundo item da lista (`li:nth-child(2)`) vai ficar com a cor v
 1) `even`: Seleciona os elementos de índices pares.
 2) `odd`: Seleciona os elementos de índices ímpares.
 
+4.  `:nth-last-child()`: Seleciona o último filho, onde 1 é o último de todos, 2 é o penúltimo, 3 é o antepenúltimo, etc.
 
- 4. **`:first-child`** e **`:last-child`**: Seleciona o primeiro ou o último filho
+5. **`:active`**: Quando o elemento está sendo clicado
+Essa pseudo-classe se aplica no exato momento em que você **pressiona o botão do mouse** em um elemento, mas **antes de soltar**. Imagine que você está clicando em um botão e quer que ele mostre uma animação de "pressão" enquanto o usuário ainda está com o botão do mouse pressionado. É como se o botão ficasse "afundado" enquanto você clica nele.
+```css
+button:active {
+    background-color: darkblue;
+}
+```
+Aqui, quando o usuário clicar no botão, enquanto o clique estiver acontecendo, o fundo do botão ficará azul escuro (`darkblue`).
+
+ 6. **`:first-child`** e **`:last-child`**: Seleciona o primeiro ou o último filho
 Essas pseudo-classes são como se você estivesse decorando o **primeiro** ou o **último** móvel em uma fila de móveis.
 ```css
 p:first-child {
@@ -2815,8 +2930,7 @@ Aplicação:
 ```
 O primeiro parágrafo ficará em negrito, enquanto o último ficará em itálico.
 
-
-5. **`:not()`**: Seleciona tudo, exceto o que você definir
+7. **`:not()`**: Seleciona tudo, exceto o que você definir
 Essa é como se você estivesse dizendo: "Quero estilizar todos os móveis da sala, menos aquele sofá vermelho."
 ```css
 button:not(.cancelar) {
@@ -2831,7 +2945,7 @@ Aplicação:
 Aqui, todos os botões **que não têm** a classe `cancelar` terão um fundo verde. No exemplo, só o botão de "Confirmar" será afetado.
 
 
-6. **`:nth-of-type()`**: Seleciona um tipo específico de filho
+8. **`:nth-of-type()`**: Seleciona um tipo específico de filho
 Parece com o `nth-child()`, mas a diferença é que aqui você escolhe o número de um tipo específico de elemento, por exemplo, o terceiro `parágrafo`, mesmo que haja outros tipos de elementos entre eles.
 ```css
 p:nth-of-type(2) {
@@ -2849,16 +2963,17 @@ Aplicação:
 ```
 Nesse caso, o segundo parágrafo vai ficar azul, ignorando o fato de que há um título no meio.
 
-7. **`:disabled`**: Se trata de um elemento que foi desabilitado.
-8. **`:required`**: Se trata de um elemento que é obrigatório.
+9. **`:disabled`**: Se trata de um elemento que foi desabilitado.
+
+10. **`:required`**: Se trata de um elemento que é obrigatório.
 
 
 
 
 - **Pseudo-Elementos**: São elementos que são adicionados pelo próprio CSS, exemplos:
-1. `::before`: Antes de um elemento, faça tal coisa. Esse pseudo-elemento precisa de um `content; "";` dentro dele, mesmo que ela não tenha nada dentro.
-2. `::after`: Depois de um elemento, faça tal coisa. Esse pseudo-elemento precisa de um `content; "";` dentro dela, mesmo que ela não tenha nada dentro.
-3. `::first-line`: Pega a primeira linha de um texto. E isso se adapta com o tamanho da tela do dispositivo.
+2. `::before`: Antes de um elemento, faça tal coisa. Esse pseudo-elemento precisa de um `content; "";` dentro dele, mesmo que ela não tenha nada dentro.
+3. `::after`: Depois de um elemento, faça tal coisa. Esse pseudo-elemento precisa de um `content; "";` dentro dela, mesmo que ela não tenha nada dentro.
+4. `::first-line`: Pega a primeira linha de um texto. E isso se adapta com o tamanho da tela do dispositivo.
 
 
 
@@ -2894,8 +3009,12 @@ Este código reduz o tamanho da fonte dos parágrafos para 12px em telas menores
 
 
 # **FLEXBOX CSS**
-**O que é o Flexbox?**
+## O que é o Flexbox?
 O Flexbox (ou _Flexible Box Layout_) é um sistema de layout em CSS que foi criado para facilitar o alinhamento e a distribuição de itens dentro de um contêiner, mesmo quando o tamanho dos itens ou do contêiner é dinâmico ou desconhecido. Ele é ideal para construir interfaces responsivas, permitindo que os elementos dentro de um contêiner se ajustem de acordo com o espaço disponível.
+
+
+## Classes Flexbox
+**AVISO: Quando for utilizar Flexbox, você precisa dar uma classe ao elemento-pai que irá ter o `display: flex;`. Se não houver uma classe, muito possivelmente o output sairá errado.**
 
 
 
@@ -3232,6 +3351,8 @@ Essas três propriedades juntas formam o comportamento de "flex sizing" em layou
 
 
 
+# **IMAGENS**
+
 # **PEGANDO IMAGENS SEM DIREITOS AUTORAIS**
 # Melhores sites para pegar imagens sem direitos autorais:
 - Unsplash
@@ -3241,6 +3362,16 @@ Essas três propriedades juntas formam o comportamento de "flex sizing" em layou
 - Pixabay
 - Libreshot
 - Wikimedia Commons
+
+
+# **PEGANDO ÍCONES SEM DIREITO AUTORAIS**
+
+# Melhores sites para pegar ícones sem direitos autorais:
+- **[Font Awesome](https://fontawesome.com/)**: Um dos mais populares. Eles oferecem uma biblioteca enorme de ícones gratuitos e pagos. Você pode facilmente adicionar os ícones diretamente ao seu HTML com classes CSS.
+- **[Flaticon](https://www.flaticon.com/)**: Um site com milhares de ícones gratuitos e pagos. Você pode baixar em diferentes formatos e escolher estilos como flat, line, e outros.
+- **[IconFinder](https://www.iconfinder.com/)**: Oferece uma vasta gama de ícones, muitos deles gratuitos para uso pessoal ou comercial, com opções pagas também.
+- **[Heroicons](https://heroicons.com/)**: Uma biblioteca open-source de ícones feita para Tailwind CSS, mas pode ser usada com qualquer projeto web. Todos são SVGs e gratuitos.
+
 
 
 
